@@ -18,15 +18,14 @@ namespace FarmHandApp.Data
         public virtual ApplicationUser User { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string ChoreName { get; set; }
 
         [Required]
-        public string Description { get; set; }
+        public string ChoreDescription { get; set; }
 
         [Required]
         public ChoreLocation Location { get; set; }
 
-        [Required]
         public TypeOfAnimal Animal { get; set; }
 
         [Required]
@@ -45,7 +44,8 @@ namespace FarmHandApp.Data
     public enum ChoreLocation
     {
         Animal_Encounters_Barn,
-        Prairie_Town_Barn,
+        Golden_Eagle_Barn,
+        Campbell_Barn,
         Bank_Barn,
         Ag_Office,
         Facilities_Building,
@@ -55,7 +55,8 @@ namespace FarmHandApp.Data
     public enum TypeOfAnimal
     {
         Sheep,
-        Goats,
+        Arapawa_Goats,
+        Saanen_Goats,
         Cows,
         Donkeys,
         Chickens,
