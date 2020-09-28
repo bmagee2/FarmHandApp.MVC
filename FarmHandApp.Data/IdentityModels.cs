@@ -32,6 +32,7 @@ namespace FarmHandApp.Data
             return new ApplicationDbContext();
         }
 
+        // TEST DEVELOP BRANCH
         // ADDED DbSets
         //public DbSet<Chore> Chores { get; set; }
         //public DbSet<UserChore> UserChores { get; set; }
