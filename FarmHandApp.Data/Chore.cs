@@ -34,6 +34,9 @@ namespace FarmHandApp.Data
         [Required]
         public bool IsDaily { get; set; }
 
+        [Required]
+        public bool IsPublished { get; set; }   // get all chores work around -- better option?
+
         public DateTimeOffset CreatedUtc { get; set; }
 
         public DateTimeOffset ModifiedUtc { get; set; }

@@ -238,6 +238,7 @@
     <Content Include="Views\Shared\DisplayTemplates\DateTimeOffset.cshtml" />
     <Content Include="Views\Chore\Index.cshtml" />
     <Content Include="Views\Chore\Create.cshtml" />
+    <Content Include="Views\Chore\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,7 +17,7 @@ namespace FarmHandApp.Services
             _userId = userId;
         }
 
-        public bool CreateNote(ChoreCreate model)
+        public bool CreateChore(ChoreCreate model)
         {
             var entity =
                 new Chore()
@@ -29,6 +29,7 @@ namespace FarmHandApp.Services
                     Animal = model.Animal,
                     TimeOfDay = model.TimeOfDay,
                     IsDaily = model.IsDaily,
+                    IsPublished = model.IsPublished,
                     CreatedUtc = DateTimeOffset.Now,
                     ModifiedUtc = DateTimeOffset.Now
                 };
@@ -40,27 +41,57 @@ namespace FarmHandApp.Services
             }
         }
 
-        //public IEnumerable<ChoreListItem> GetAllChores()
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var query =
-        //            ctx
-        //                .Chores
-        //                .Where(e => e.IsPublished) // view all bool (view by manager only or all staff)
-        //                .Select(
-        //                    e =>
-        //                        new ChoreListItem
-        //                        {
-        //                            ChoreId = e.ChoreId,
-        //                            ChoreName = e.ChoreName,
-        //                            ChoreDescription = e.ChoreDescription,
+        public IEnumerable<ChoreListItem> GetAllChores()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Chores
+                        .Where(e => e.IsPublished) // view all bool (view by manager only or all staff?) -- better option?
+                        .Select(
+                            e =>
+                                new ChoreListItem
+                                {
+                                    ChoreId = e.ChoreId,
+                                    ChoreName = e.ChoreName,
+                                    ChoreDescription = e.ChoreDescription,
+                                    Location = e.Location,
+                                    Animal = e.Animal,
+                                    TimeOfDay = e.TimeOfDay,
+                                    IsDaily = e.IsDaily,
+                                    CreatedUtc = e.CreatedUtc,
+                                    ModifiedUtc = e.ModifiedUtc
+                                }
+                        );
+                return query.ToArray();
+            }
+        }
 
 
-        //                        }
-        //                );
-        //        return query.ToArray();
-        //    }
-        //}
+        public ChoreDetail GetChoreById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Chores
+                        .Single(e => e.ChoreId == id); // && e => e.IsPublished);?
+                return
+                    new ChoreDetail
+                    {
+                        UserId = entity.UserId,
+                        ChoreName = entity.ChoreName,
+                        ChoreDescription = entity.ChoreDescription,
+                        Location = entity.Location,
+                        Animal = entity.Animal,
+                        TimeOfDay = entity.TimeOfDay,
+                        IsDaily = entity.IsDaily,
+                        CreatedUtc = entity.CreatedUtc,
+                        ModifiedUtc = entity.ModifiedUtc
+                    };
+            }
+        }
+
     }
 }

@@ -54,11 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChoreService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FarmHandApp.Data\FarmHandApp.Data.csproj">
+      <Project>{8ba3ea8a-c287-4ca3-b2d3-af07d12c4863}</Project>
+      <Name>FarmHandApp.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarmHandApp.Models\FarmHandApp.Models.csproj">
+      <Project>{fd05d40e-d8ea-4ba4-bf6f-d701c5894f52}</Project>
+      <Name>FarmHandApp.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

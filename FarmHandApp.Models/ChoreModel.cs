@@ -64,5 +64,39 @@ namespace FarmHandApp.Models
         [Required]
         [Display(Name = "Daily Chore?")]
         public bool IsDaily { get; set; }
+
+        [Required]
+        [Display(Name = "Publish Chore?")]
+        public bool IsPublished { get; set; }
+    }
+
+    public class ChoreDetail
+    {
+        public int ChoreId { get; set; }
+
+        [Display(Name = "Enter By")]
+        public string UserId { get; set; }
+
+        [Display(Name = "Name")]
+        public string ChoreName { get; set; }
+
+        [Display(Name = "Description")]
+        public string ChoreDescription { get; set; }
+
+        public ChoreLocation Location { get; set; }
+
+        public TypeOfAnimal Animal { get; set; }
+
+        [Display(Name = "Time of Day")]
+        public TimeOfDay TimeOfDay { get; set; }
+
+        [Display(Name = "Daily Chore?")]
+        public bool IsDaily { get; set; }
+
+        [Display(Name = "Created")]
+        public DateTimeOffset CreatedUtc { get; set; }
+
+        [Display(Name = "Modified")]
+        public DateTimeOffset ModifiedUtc { get; set; }
     }
 }
