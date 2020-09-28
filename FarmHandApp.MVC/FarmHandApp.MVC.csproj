@@ -239,6 +239,8 @@
     <Content Include="Views\Chore\Index.cshtml" />
     <Content Include="Views\Chore\Create.cshtml" />
     <Content Include="Views\Chore\Details.cshtml" />
+    <Content Include="Views\Chore\Edit.cshtml" />
+    <Content Include="Views\Chore\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -39,11 +39,11 @@ namespace FarmHandApp.MVC.Controllers
 
             if (service.CreateChore(model))
             {
-                TempData["SaveResult"] = "Your chore was created.";
+                TempData["SaveResult"] = "Chore was created.";
                 return RedirectToAction("Index");
             };
 
-            ModelState.AddModelError("", "The chore could not be created.");
+            ModelState.AddModelError("", "Chore could not be created.");
 
             return View(model);
         }
@@ -56,6 +56,74 @@ namespace FarmHandApp.MVC.Controllers
 
             return View(model);
         }
+
+        // PUT -- Chore by id
+        public ActionResult Edit(int id)
+        {
+            var service = CreateChoreService();
+            var detail = service.GetChoreById(id);
+            var model =
+                new ChoreEdit
+                {
+                    ChoreId = detail.ChoreId,
+                    ChoreName = detail.ChoreName,
+                    ChoreDescription = detail.ChoreDescription,
+                    Location = detail.Location,
+                    Animal = detail.Animal,
+                    TimeOfDay = detail.TimeOfDay,
+                    IsDaily = detail.IsDaily
+                };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, ChoreEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.ChoreId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateChoreService();
+
+            if (service.UpdateChore(model))
+            {
+                TempData["SaveResult"] = "Chore was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Chore could not be updated.");
+            return View(model);
+        }
+
+        // DELETE -- Chore by id
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateChoreService();
+            var model = svc.GetChoreById(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteChore(int id)
+        {
+            var service = CreateChoreService();
+
+            service.DeleteChore(id);
+
+            TempData["SaveResult"] = "Chore was deleted";
+
+            return RedirectToAction("Index");
+        }
+
 
         // CreateChoreService METHOD
         private ChoreService CreateChoreService()

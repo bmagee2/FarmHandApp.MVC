@@ -99,4 +99,29 @@ namespace FarmHandApp.Models
         [Display(Name = "Modified")]
         public DateTimeOffset ModifiedUtc { get; set; }
     }
+
+    public class ChoreEdit
+    {
+        public int ChoreId { get; set; }
+
+        [MinLength(2, ErrorMessage = "Please enter at least 2 characters.")]
+        [MaxLength(100, ErrorMessage = "There are too many characters in this field.")]
+        [Display(Name = "Name")]
+        public string ChoreName { get; set; }
+
+        [MaxLength(4000)]
+        [Display(Name = "Description")]
+        public string ChoreDescription { get; set; }
+
+        public ChoreLocation Location { get; set; }
+
+        public TypeOfAnimal Animal { get; set; }
+
+        [Display(Name = "Time of Day")]
+        public TimeOfDay TimeOfDay { get; set; }
+
+        [Display(Name = "Daily Chore?")]
+        public bool IsDaily { get; set; }
+
+    }
 }
