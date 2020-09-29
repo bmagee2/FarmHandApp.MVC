@@ -76,7 +76,7 @@ namespace FarmHandApp.Services
                 var entity =
                     ctx
                         .Chores
-                        .Single(e => e.ChoreId == id); // && e => e.IsPublished);?
+                        .Single(e => e.ChoreId == id ); 
                 return
                     new ChoreDetail
                     {
@@ -100,6 +100,7 @@ namespace FarmHandApp.Services
                 var entity =
                     ctx
                         .Chores
+                        //.Single(e => e.ChoreId == id);
                         .Single(e => e.ChoreId == model.ChoreId);
 
                 entity.ChoreName = model.ChoreName;

@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Chore Create</h2>
 
 
 @using (Html.BeginForm())
@@ -57,6 +57,15 @@
             <div class="checkbox">
                 @Html.EditorFor(model => model.IsDaily)
                 @Html.ValidationMessageFor(model => model.IsDaily, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsPublished, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.IsPublished)
+                @Html.ValidationMessageFor(model => model.IsPublished, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>

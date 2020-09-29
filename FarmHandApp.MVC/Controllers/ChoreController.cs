@@ -65,7 +65,7 @@ namespace FarmHandApp.MVC.Controllers
             var model =
                 new ChoreEdit
                 {
-                    ChoreId = detail.ChoreId,
+                    //ChoreId = detail.ChoreId,
                     ChoreName = detail.ChoreName,
                     ChoreDescription = detail.ChoreDescription,
                     Location = detail.Location,
@@ -84,7 +84,7 @@ namespace FarmHandApp.MVC.Controllers
 
             if (model.ChoreId != id)
             {
-                ModelState.AddModelError("", "Id Mismatch");
+                ModelState.AddModelError("", "Id Mismatch");    
                 return View(model);
             }
 

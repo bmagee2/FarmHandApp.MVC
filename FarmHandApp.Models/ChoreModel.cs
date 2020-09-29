@@ -37,6 +37,8 @@ namespace FarmHandApp.Models
 
         [Display(Name = "Modified")]
         public DateTimeOffset ModifiedUtc { get; set; }
+
+        public List<Note> Notes { get; set; }
     }
 
     public class ChoreCreate

@@ -22,9 +22,9 @@
 }
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.ChoreId)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ChoreName)
         </th>
@@ -44,6 +44,9 @@
             @Html.DisplayNameFor(model => model.IsDaily)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.CreatedUtc)
         </th>
         <th>
@@ -51,6 +54,7 @@
         </th>
         <th>
             @* LIST OF NOTES FOR CHORE*@
+            @Html.DisplayNameFor(model => model.Notes)
         </th>
         <th></th>
     </tr>
@@ -58,9 +62,9 @@
     @foreach (var item in Model)
     {
 <tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.ChoreId)
-    </td>
+    @*<td>
+            @Html.DisplayFor(modelItem => item.ChoreId)
+        </td>*@
     <td>
         @Html.DisplayFor(modelItem => item.ChoreName)
     </td>
@@ -80,6 +84,9 @@
         @Html.DisplayFor(modelItem => item.IsDaily)
     </td>
     <td>
+        @Html.DisplayFor(modelItem => item.UserId)
+    </td>
+    <td>
         @Html.DisplayFor(modelItem => item.CreatedUtc)
     </td>
     <td>
@@ -87,6 +94,7 @@
     </td>
     <td>
         @* LIST OF NOTES FOR CHORE*@
+        @Html.DisplayFor(modelItem => item.Notes)
     </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.ChoreId }) |
