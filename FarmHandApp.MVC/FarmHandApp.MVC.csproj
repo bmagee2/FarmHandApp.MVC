@@ -171,6 +171,7 @@
     <Compile Include="Controllers\ChoreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\UserChoreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -247,6 +248,7 @@
     <Content Include="Views\UserChore\Create.cshtml" />
     <Content Include="Views\UserChore\Index.cshtml" />
     <Content Include="Views\UserChore\Delete.cshtml" />
+    <Content Include="Views\Note\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

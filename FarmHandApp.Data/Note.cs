@@ -21,6 +21,10 @@ namespace FarmHandApp.Data
         public int UserChoreId { get; set; }
         public virtual UserChore UserChore { get; set; }
 
+        [ForeignKey(nameof(Chore))]
+        public int ChoreId { get; set; }        // needed?
+        public virtual Chore Chore { get; set; }
+
         [Required]
         public string NoteText { get; set; }
 
