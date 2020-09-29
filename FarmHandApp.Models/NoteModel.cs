@@ -34,9 +34,20 @@ namespace FarmHandApp.Models
         public string NoteText { get; set; }
     }
 
-    public class NoteDetails
+    public class NoteDetail
     {
+        public int NoteId { get; set; }
+        public int UserChoreId { get; set; }
+        public int ChoreId { get; set; }
 
+        [Display(Name = "Note")]
+        public string NoteText { get; set; }
+
+        [Display(Name = "Created")]
+        public DateTimeOffset CreatedUtc { get; set; }
+
+        [Display(Name = "Modified")]
+        public DateTimeOffset ModifiedUtc { get; set; }
     }
 
     public class NoteEdit

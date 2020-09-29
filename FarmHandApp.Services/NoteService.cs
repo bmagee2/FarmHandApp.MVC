@@ -37,27 +37,49 @@ namespace FarmHandApp.Services
             }
         }
 
-        public IEnumerable<NoteListItem> GetNotesById(int id)
+        //public IEnumerable<NoteListItem> GetAllNotes()   // i think this is wrong
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query =
+        //            ctx
+        //                .Notes
+        //                .Where(e => e.UserChoreId == id)       // GET ALL NOTES FOR A CHORE BY CHOREID OR USERCHOREID?
+        //                .Select(
+        //                    e =>
+        //                        new NoteListItem
+        //                        {
+        //                            NoteId = e.NoteId,
+        //                            ChoreId = e.ChoreId,    // needed?
+        //                            NoteText = e.NoteText,
+        //                            CreatedUtc = e.CreatedUtc,
+        //                            ModifiedUtc = e.ModifiedUtc
+        //                        }
+        //                );
+
+        //        return query.ToArray();
+        //    }
+        //}
+
+
+        public NoteDetail GetNoteById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query =
+                var entity =
                     ctx
                         .Notes
-                        .Where(e => e.UserChoreId == id)       // GET ALL NOTES FOR A CHORE BY CHOREID OR USERCHOREID?
-                        .Select(
-                            e =>
-                                new NoteListItem
-                                {
-                                    NoteId = e.NoteId,
-                                    ChoreId = e.ChoreId,    // needed?
-                                    NoteText = e.NoteText,
-                                    CreatedUtc = e.CreatedUtc,
-                                    ModifiedUtc = e.ModifiedUtc
-                                }
-                        );
-
-                return query.ToArray();
+                        .Single(e => e.NoteId == id);   // ???
+                return
+                    new NoteDetail
+                    {
+                        UserChoreId = entity.UserChoreId,
+                        NoteId = entity.NoteId,
+                        ChoreId = entity.ChoreId,    // needed?
+                        NoteText = entity.NoteText,
+                        CreatedUtc = entity.CreatedUtc,
+                        ModifiedUtc = entity.ModifiedUtc
+                    };
             }
         }
     }

@@ -67,7 +67,7 @@ namespace FarmHandApp.Services
                     new UserChoreDetail
                     {
                         UserId = entity.UserId,
-                        ChoreId = entity.ChoreId,
+                        //ChoreId = entity.ChoreId,
                         IsComplete = entity.IsComplete
                     };
             }

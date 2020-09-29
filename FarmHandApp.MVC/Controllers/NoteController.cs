@@ -15,6 +15,10 @@ namespace FarmHandApp.MVC.Controllers
         // GET: Note
         public ActionResult Index()
         {
+            //var service = CreateNoteService();
+            //var model = service.GetAllNotes();
+
+            //return View(model);
             return View();
         }
 
@@ -44,6 +48,22 @@ namespace FarmHandApp.MVC.Controllers
 
             return View(model);
         }
+
+        // GET -- Details
+        public ActionResult Details(int id)
+        {
+            var svc = CreateNoteService();
+            var model = svc.GetNoteById(id);
+
+            return View(model);
+        }
+
+        // PUT
+
+
+
+        // DELETE
+
 
 
         // CreateNoteService METHOD
