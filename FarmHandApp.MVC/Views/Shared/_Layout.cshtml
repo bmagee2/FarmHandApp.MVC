@@ -26,13 +26,17 @@
                     {
                         <li>@Html.ActionLink("Chores", "Index", "Chore")</li>
                     }
-                    @if (User.Identity.IsAuthenticated)
+                    @*@if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("UserChores", "Index", "UserChore")</li>
-                    }
+                    }*@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Notes", "Index", "Notes")</li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Create Note", "Create", "Note")</li>
                     }
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
