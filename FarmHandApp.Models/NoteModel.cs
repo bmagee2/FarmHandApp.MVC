@@ -12,14 +12,17 @@ namespace FarmHandApp.Models
         public int NoteId { get; set; }
         public int ChoreId { get; set; }
 
+        [Display(Name = "Note Title")]
+        public string NoteTitle { get; set; }
+
         [Display(Name = "Note")]
         public string NoteText { get; set; }
 
-        //[Display(Name = "Created")]
-        //public DateTimeOffset CreatedUtc { get; set; }
+        [Display(Name = "Created at")]
+        public DateTimeOffset CreatedUtc { get; set; }
 
-        //[Display(Name = "Modified")]
-        //public DateTimeOffset ModifiedUtc { get; set; }
+        [Display(Name = "Modified at")]
+        public DateTimeOffset ModifiedUtc { get; set; }
     }
 
     public class NoteCreate
@@ -27,6 +30,10 @@ namespace FarmHandApp.Models
         //public int NoteId { get; set; }
         //public int UserChoreId { get; set; }
         public int ChoreId { get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        public string NoteTitle { get; set; }
 
         [Required]
         [MaxLength(2000)]
@@ -42,19 +49,23 @@ namespace FarmHandApp.Models
         public int NoteId { get; set; }
         public int ChoreId { get; set; }
 
+        [Display(Name = "Note Title")]
+        public string NoteTitle { get; set; }
+
         [Display(Name = "Note")]
         public string NoteText { get; set; }
 
-        //[Display(Name = "Created")]
-        //public DateTimeOffset CreatedUtc { get; set; }
+        [Display(Name = "Created")]
+        public DateTimeOffset CreatedUtc { get; set; }
 
-        //[Display(Name = "Modified")]
-        //public DateTimeOffset ModifiedUtc { get; set; }
+        [Display(Name = "Modified")]
+        public DateTimeOffset ModifiedUtc { get; set; }
     }
 
     public class NoteEdit
     {
         public int NoteId { get; set; }
+        public string NoteTitle { get; set; }
         public string NoteText { get; set; }
     }
 }

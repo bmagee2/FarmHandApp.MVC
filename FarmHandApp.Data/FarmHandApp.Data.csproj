@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Chore.cs" />
+    <Compile Include="ChoreUser.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
