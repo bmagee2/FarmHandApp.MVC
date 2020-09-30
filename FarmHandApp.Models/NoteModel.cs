@@ -54,6 +54,7 @@ namespace FarmHandApp.Models
 
     public class NoteEdit
     {
-
+        public int NoteId { get; set; }
+        public string NoteText { get; set; }
     }
 }

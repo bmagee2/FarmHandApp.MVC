@@ -49,7 +49,7 @@ namespace FarmHandApp.MVC.Controllers
             return View(model);
         }
 
-        // GET -- Details
+        // GET DETAILS
         public ActionResult Details(int id)
         {
             var svc = CreateNoteService();
@@ -58,23 +58,79 @@ namespace FarmHandApp.MVC.Controllers
             return View(model);
         }
 
-        // GET NOTES BY CHOREID
-        public ActionResult ListOfNotesIndex(int id)
+        // GET NOTES BY CHOREID?
+        //public ActionResult ListOfNotesIndex(int id)
+        //{
+        //    var svc = CreateChoreService();
+        //    var model = svc.GetNotesByChoreId(id);
+
+        //    return View(model);
+        //}
+
+        // PUT
+        public ActionResult Edit(int id)
         {
-            var svc = CreateChoreService();
-            var model = svc.GetNotesByChoreId(id);
+            var service = CreateNoteService();
+            var detail = service.GetNoteById(id);
+            var model =
+                new NoteEdit
+                {
+                    NoteId = detail.NoteId,
+                    NoteText = detail.NoteText
+                };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, NoteEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.NoteId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateNoteService();
+
+            if (service.UpdateNote(model))
+            {
+                TempData["SaveResult"] = "Note was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Note could not be updated.");
+            return View(model);
+        }
+
+
+        // DELETE
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateNoteService();
+            var model = svc.GetNoteById(id);
 
             return View(model);
         }
 
-        // PUT
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteNote(int id)
+        {
+            var service = CreateNoteService();
 
+            service.DeleteNote(id);
 
+            TempData["SaveResult"] = "Note was deleted";
 
-        // DELETE
+            return RedirectToAction("Index");
+        }
 
-
-        // CreateChoreService METHOD
+        // CreateChoreService METHOD ??
         private ChoreService CreateChoreService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

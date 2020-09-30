@@ -96,40 +96,40 @@ namespace FarmHandApp.Services
             }
         }
 
-        // GET NOTES FOR EACH CHORE
-        public IEnumerable<NoteListItem> GetNotesByChoreId(int id)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                  ctx
-                      .Chores
-                      .FirstOrDefault(e => e.ChoreId == id);
+        // GET NOTES FOR EACH CHORE --- don't think I need this
+        //public IEnumerable<NoteListItem> GetNotesByChoreId(int id)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity =
+        //          ctx
+        //              .Chores
+        //              .FirstOrDefault(e => e.ChoreId == id);
 
-                IEnumerable<Note> notes = entity.Notes;
+        //        IEnumerable<Note> notes = entity.Notes;
 
-                return CreateListOfNotes(notes);
-            }
-        }
+        //        return CreateListOfNotes(notes);
+        //    }
+        //}
 
-        private IEnumerable<NoteListItem> CreateListOfNotes(IEnumerable<Note> notes)
-        {
+        //private IEnumerable<NoteListItem> CreateListOfNotes(IEnumerable<Note> notes)
+        //{
 
-            List<NoteListItem> noteListItems = new List<NoteListItem>();
+        //    List<NoteListItem> noteListItems = new List<NoteListItem>();
 
-            foreach (Note note in notes)
-            {
-                NoteListItem noteListItem = new NoteListItem
-                {
-                    ChoreId = note.ChoreId,
-                    NoteId = note.NoteId,
-                    NoteText = note.NoteText
+        //    foreach (Note note in notes)
+        //    {
+        //        NoteListItem noteListItem = new NoteListItem
+        //        {
+        //            ChoreId = note.ChoreId,
+        //            NoteId = note.NoteId,
+        //            NoteText = note.NoteText
 
-                };
-                noteListItems.Add(noteListItem);
-            }
-            return noteListItems;
-        }
+        //        };
+        //        noteListItems.Add(noteListItem);
+        //    }
+        //    return noteListItems;
+        //}
 
         public bool UpdateChore(ChoreEdit model)
         {

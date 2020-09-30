@@ -17,27 +17,7 @@ namespace FarmHandApp.Services
             _userId = userId;
         }
 
-        // CREATE
-
-        // give this a try 
-        //public bool CreateNote(NoteCreate model)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var note =
-        //        new Note()
-        //        {
-        //            UserId = _userId.ToString(),
-        //            //NoteId = model.NoteId,
-        //            NoteText = model.NoteText,
-        //            //ChoreId = model.ChoreId,
-        //            //CreatedUtc = DateTimeOffset.Now
-        //        };
-        //        ctx.Notes.Add(note);
-        //        return ctx.SaveChanges() == 1;
-        //    }
-        //}
-
+        // CREATE NOTE
         public bool CreateNote(NoteCreate model)
         {
             var entity =
@@ -59,9 +39,24 @@ namespace FarmHandApp.Services
             }
         }
 
-        // UPDATE
-
-        // DELETE
+        // give this a try?? 
+        //public bool CreateNote(NoteCreate model)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var note =
+        //        new Note()
+        //        {
+        //            UserId = _userId.ToString(),
+        //            //NoteId = model.NoteId,
+        //            NoteText = model.NoteText,
+        //            //ChoreId = model.ChoreId,
+        //            //CreatedUtc = DateTimeOffset.Now
+        //        };
+        //        ctx.Notes.Add(note);
+        //        return ctx.SaveChanges() == 1;
+        //    }
+        //}
 
         // GET ALL NOTES (INDEX)
         public IEnumerable<NoteListItem> GetAllNotes()   
@@ -109,39 +104,38 @@ namespace FarmHandApp.Services
             }
         }
 
-        //public IEnumerable<NoteListItem> GetNotesByChoreId(int id)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity =
-        //          ctx
-        //              .Chores
-        //              .FirstOrDefault(e => e.ChoreId == id);
+        // UPDATE
+        public bool UpdateNote(NoteEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Notes
+                        .Single(e => e.NoteId == model.NoteId);
 
-        //        IEnumerable<Note> notes = entity.Notes;
+                entity.NoteText = model.NoteText;
+                //entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
-        //        return CreateListOfNotes(notes);
-        //    }
-        //}
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
-        //private IEnumerable<NoteListItem> CreateListOfNotes(IEnumerable<Note> notes)
-        //{
+        // DELETE
+        public bool DeleteNote(int noteId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Notes
+                        .Single(e => e.NoteId == noteId);
 
-        //    List<NoteListItem> noteListItems = new List<NoteListItem>();
+                ctx.Notes.Remove(entity);
 
-        //    foreach (Note note in notes)
-        //    {
-        //        NoteListItem noteListItem = new NoteListItem
-        //        {
-        //            ChoreId = note.ChoreId,
-        //            NoteId = note.NoteId,
-        //            NoteText = note.NoteText
-
-        //        };
-        //        noteListItems.Add(noteListItem);
-        //    }
-        //    return noteListItems;
-        //}
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
 
     }
