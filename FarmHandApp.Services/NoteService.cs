@@ -17,6 +17,7 @@ namespace FarmHandApp.Services
             _userId = userId;
         }
 
+        // CREATE
 
         //public bool CreateNote(NoteCreate model)
         //{
@@ -57,6 +58,10 @@ namespace FarmHandApp.Services
             }
         }
 
+        // UPDATE
+
+        // DELETE
+
         public IEnumerable<NoteListItem> GetAllNotes()   
         {
             using (var ctx = new ApplicationDbContext())
@@ -82,25 +87,25 @@ namespace FarmHandApp.Services
         }
 
 
-        //    public NoteDetail GetNoteById(int id)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity =
-        //            ctx
-        //                .Notes
-        //                .Single(e => e.NoteId == id);   // ???
-        //        return
-        //            new NoteDetail
-        //            {
-        //                NoteId = entity.NoteId,
-        //                ChoreId = entity.ChoreId,    // needed?
-        //                NoteText = entity.NoteText,
-        //                //CreatedUtc = entity.CreatedUtc,
-        //                //ModifiedUtc = entity.ModifiedUtc
-        //            };
-        //    }
-        //}
+        public NoteDetail GetNoteById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Notes
+                        .Single(e => e.NoteId == id);   // ???
+                return
+                    new NoteDetail
+                    {
+                        NoteId = entity.NoteId,
+                        ChoreId = entity.ChoreId,    // needed?
+                        NoteText = entity.NoteText,
+                        //CreatedUtc = entity.CreatedUtc,
+                        //ModifiedUtc = entity.ModifiedUtc
+                    };
+            }
+        }
 
         //public IEnumerable<NoteListItem> GetNotesByChoreId(int id)
         //{

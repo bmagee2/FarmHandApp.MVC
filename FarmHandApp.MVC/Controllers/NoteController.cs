@@ -50,13 +50,13 @@ namespace FarmHandApp.MVC.Controllers
         }
 
         // GET -- Details
-        //public ActionResult Details(int id)
-        //{
-        //    var svc = CreateNoteService();
-        //    var model = svc.GetNoteById(id);
+        public ActionResult Details(int id)
+        {
+            var svc = CreateNoteService();
+            var model = svc.GetNoteById(id);
 
-        //    return View(model);
-        //}
+            return View(model);
+        }
 
         // PUT
 
@@ -65,6 +65,13 @@ namespace FarmHandApp.MVC.Controllers
         // DELETE
 
 
+        // CreateChoreService METHOD
+        private ChoreService CreateChoreService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var recipeService = new ChoreService(userId);
+            return recipeService;
+        }
 
         // CreateNoteService METHOD
         private NoteService CreateNoteService()
