@@ -22,9 +22,16 @@ namespace FarmHandApp.Data
         public virtual Chore Chore { get; set; }
 
         [Required]
+        public string NoteTitle { get; set; }
+
+        [Required]
         public string NoteText { get; set; }
 
         [Required]
         public bool IsPublished { get; set; }   // get all notes work around -- better option?
+
+        public DateTimeOffset CreatedUtc { get; set; }
+
+        public DateTimeOffset ModifiedUtc { get; set; }
     }
 }

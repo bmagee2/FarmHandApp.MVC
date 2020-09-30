@@ -34,6 +34,10 @@
                     {
                         <li>@Html.ActionLink("Create Note", "Create", "Note")</li>
                     }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Chore User", "Index", "ChoreUser")</li>
+                    }
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>

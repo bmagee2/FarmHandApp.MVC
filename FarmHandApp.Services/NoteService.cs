@@ -26,10 +26,11 @@ namespace FarmHandApp.Services
                     UserId = _userId.ToString(),
                     ChoreId = model.ChoreId,
                     //NoteId = model.NoteId,
+                    NoteTitle = model.NoteTitle,
                     NoteText = model.NoteText,
                     IsPublished = model.IsPublished,
-                    //CreatedUtc = DateTimeOffset.Now,
-                    //ModifiedUtc = DateTimeOffset.Now
+                    CreatedUtc = DateTimeOffset.Now,
+                    ModifiedUtc = DateTimeOffset.Now
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -72,10 +73,11 @@ namespace FarmHandApp.Services
                                 new NoteListItem
                                 {
                                     NoteId = e.NoteId,
-                                    ChoreId = e.ChoreId,    // needed?
+                                    ChoreId = e.ChoreId,    
+                                    NoteTitle = e.NoteTitle,
                                     NoteText = e.NoteText,
-                                    //CreatedUtc = e.CreatedUtc,
-                                    //ModifiedUtc = e.ModifiedUtc
+                                    CreatedUtc = e.CreatedUtc,
+                                    ModifiedUtc = e.ModifiedUtc
                                 }
                         );
 
@@ -91,15 +93,16 @@ namespace FarmHandApp.Services
                 var entity =
                     ctx
                         .Notes
-                        .Single(e => e.NoteId == id);   // ???
+                        .Single(e => e.NoteId == id);   
                 return
                     new NoteDetail
                     {
                         NoteId = entity.NoteId,
-                        ChoreId = entity.ChoreId,    // needed?
+                        ChoreId = entity.ChoreId,    
+                        NoteTitle = entity.NoteTitle,
                         NoteText = entity.NoteText,
-                        //CreatedUtc = entity.CreatedUtc,
-                        //ModifiedUtc = entity.ModifiedUtc
+                        CreatedUtc = entity.CreatedUtc,
+                        ModifiedUtc = entity.ModifiedUtc
                     };
             }
         }
@@ -114,8 +117,9 @@ namespace FarmHandApp.Services
                         .Notes
                         .Single(e => e.NoteId == model.NoteId);
 
+                entity.NoteTitle = model.NoteTitle;
                 entity.NoteText = model.NoteText;
-                //entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
                 return ctx.SaveChanges() == 1;
             }

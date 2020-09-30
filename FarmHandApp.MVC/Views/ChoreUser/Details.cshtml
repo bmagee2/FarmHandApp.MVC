@@ -1,0 +1,49 @@
+﻿@model FarmHandApp.Models.ChoreUserDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ChoreUserDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ChoreUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChoreUserId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChoreId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChoreId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChoreIsComplete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChoreIsComplete)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ChoreUserId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
