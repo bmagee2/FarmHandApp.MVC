@@ -76,11 +76,12 @@ namespace FarmHandApp.Services
                 var entity =
                     ctx
                         .Chores
-                        .Single(e => e.ChoreId == id ); 
+                        .Single(e => e.ChoreId == id); 
                 return
                     new ChoreDetail
                     {
                         UserId = entity.UserId,
+                        ChoreId = entity.ChoreId,   // this fixed "Id Mismatch" message
                         ChoreName = entity.ChoreName,
                         ChoreDescription = entity.ChoreDescription,
                         Location = entity.Location,
@@ -135,7 +136,6 @@ namespace FarmHandApp.Services
                 var entity =
                     ctx
                         .Chores
-                        //.Single(e => e.ChoreId == id);
                         .Single(e => e.ChoreId == model.ChoreId);
 
                 entity.ChoreName = model.ChoreName;

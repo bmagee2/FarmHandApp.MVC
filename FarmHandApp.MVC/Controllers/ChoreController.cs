@@ -65,7 +65,7 @@ namespace FarmHandApp.MVC.Controllers
             var model =
                 new ChoreEdit
                 {
-                    //ChoreId = detail.ChoreId,
+                    ChoreId = detail.ChoreId,
                     ChoreName = detail.ChoreName,
                     ChoreDescription = detail.ChoreDescription,
                     Location = detail.Location,
