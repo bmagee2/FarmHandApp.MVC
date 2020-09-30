@@ -1,0 +1,108 @@
+﻿@model IEnumerable<FarmHandApp.Models.ChoreListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Chores</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@*CHORE CREATE SUCCESS MESSAGE*@
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success fade in" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ChoreId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChoreName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChoreDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Animal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeOfDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDaily)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedUtc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedUtc)
+        </th>
+        <th>
+            @* LIST OF NOTES FOR CHORE*@
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+            @Html.DisplayFor(modelItem => item.ChoreId)
+        </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ChoreName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ChoreDescription)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Location)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Animal)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TimeOfDay)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IsDaily)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreatedUtc)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ModifiedUtc)
+    </td>
+    <td>
+        @* LIST OF NOTES FOR CHORE*@
+        @Html.DisplayFor(modelItem => item.Notes)
+        @Html.ActionLink("Notes", "Index", "Note")
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.ChoreId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ChoreId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ChoreId })
+    </td>
+</tr>
+    }
+
+</table>

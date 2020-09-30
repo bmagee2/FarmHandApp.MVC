@@ -58,7 +58,6 @@
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserChore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
