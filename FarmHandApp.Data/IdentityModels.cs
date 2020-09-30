@@ -36,7 +36,7 @@ namespace FarmHandApp.Data
         // TEST DEVELOP BRANCH
         // ADDED DbSets
         public DbSet<Chore> Chores { get; set; }
-        public DbSet<UserChore> UserChores { get; set; }
+        //public DbSet<UserChore> UserChores { get; set; }
         public DbSet<Note> Notes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

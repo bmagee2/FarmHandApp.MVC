@@ -172,7 +172,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
-    <Compile Include="Controllers\UserChoreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -243,11 +242,6 @@
     <Content Include="Views\Chore\Details.cshtml" />
     <Content Include="Views\Chore\Edit.cshtml" />
     <Content Include="Views\Chore\Delete.cshtml" />
-    <Content Include="Views\UserChore\Edit.cshtml" />
-    <Content Include="Views\UserChore\Details.cshtml" />
-    <Content Include="Views\UserChore\Create.cshtml" />
-    <Content Include="Views\UserChore\Index.cshtml" />
-    <Content Include="Views\UserChore\Delete.cshtml" />
     <Content Include="Views\Note\Create.cshtml" />
     <Content Include="Views\Note\Details.cshtml" />
     <Content Include="Views\Note\Index.cshtml" />

@@ -24,43 +24,43 @@ namespace FarmHandApp.Services
             _choreId = choreId;
         }
 
-        public bool CreateNote(NoteCreate model)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var note =
-                new Note()
-                {
-                    UserId = _userId.ToString(),
-                    NoteId = model.NoteId,
-                    NoteText = model.NoteText,
-                    ChoreId = model.ChoreId,
-                    CreatedUtc = DateTimeOffset.Now
-                };
-                ctx.Notes.Add(note);
-                return ctx.SaveChanges() == 1;
-            }
-        }
-
         //public bool CreateNote(NoteCreate model)
         //{
-        //    var entity =
-        //        new Note()
-        //        {
-        //            //UserId = _userId.ToString(),
-        //            //ChoreId = model.ChoreId,
-        //            NoteId = model.NoteId,
-        //            NoteText = model.NoteText,
-        //            CreatedUtc = DateTimeOffset.Now,
-        //            ModifiedUtc = DateTimeOffset.Now
-        //        };
-
         //    using (var ctx = new ApplicationDbContext())
         //    {
-        //        ctx.Notes.Add(entity);
+        //        var note =
+        //        new Note()
+        //        {
+        //            UserId = _userId.ToString(),
+        //            //NoteId = model.NoteId,
+        //            NoteText = model.NoteText,
+        //            //ChoreId = model.ChoreId,
+        //            //CreatedUtc = DateTimeOffset.Now
+        //        };
+        //        ctx.Notes.Add(note);
         //        return ctx.SaveChanges() == 1;
         //    }
         //}
+
+        public bool CreateNote(NoteCreate model)
+        {
+            var entity =
+                new Note()
+                {
+                    UserId = _userId.ToString(),
+                    ChoreId = model.ChoreId,
+                    //NoteId = model.NoteId,
+                    NoteText = model.NoteText,
+                    //CreatedUtc = DateTimeOffset.Now,
+                    //ModifiedUtc = DateTimeOffset.Now
+                };
+
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Notes.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
         //public IEnumerable<NoteListItem> GetAllNotes()   // i think this is wrong
         //{
@@ -87,26 +87,25 @@ namespace FarmHandApp.Services
         //}
 
 
-        public NoteDetail GetNoteById(int id)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                        .Notes
-                        .Single(e => e.NoteId == id);   // ???
-                return
-                    new NoteDetail
-                    {
-                        UserChoreId = entity.UserChoreId,
-                        NoteId = entity.NoteId,
-                        ChoreId = entity.ChoreId,    // needed?
-                        NoteText = entity.NoteText,
-                        CreatedUtc = entity.CreatedUtc,
-                        ModifiedUtc = entity.ModifiedUtc
-                    };
-            }
-        }
+        //    public NoteDetail GetNoteById(int id)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity =
+        //            ctx
+        //                .Notes
+        //                .Single(e => e.NoteId == id);   // ???
+        //        return
+        //            new NoteDetail
+        //            {
+        //                NoteId = entity.NoteId,
+        //                ChoreId = entity.ChoreId,    // needed?
+        //                NoteText = entity.NoteText,
+        //                //CreatedUtc = entity.CreatedUtc,
+        //                //ModifiedUtc = entity.ModifiedUtc
+        //            };
+        //    }
+        //}
 
         //public IEnumerable<NoteListItem> GetNotesByChoreId(int id)
         //{

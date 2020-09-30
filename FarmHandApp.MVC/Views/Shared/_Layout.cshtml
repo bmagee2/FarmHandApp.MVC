@@ -26,10 +26,6 @@
                     {
                         <li>@Html.ActionLink("Chores", "Index", "Chore")</li>
                     }
-                    @*@if (User.Identity.IsAuthenticated)
-                    {
-                        <li>@Html.ActionLink("UserChores", "Index", "UserChore")</li>
-                    }*@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Notes", "Index", "Notes")</li>

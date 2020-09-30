@@ -14,21 +14,21 @@
         <th>
             @Html.DisplayNameFor(model => model.NoteId)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.UserChoreId)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ChoreId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.NoteText)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.CreatedUtc)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ModifiedUtc)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -37,21 +37,21 @@
         <td>
             @Html.DisplayFor(modelItem => item.NoteId)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.UserChoreId)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.ChoreId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NoteText)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.CreatedUtc)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ModifiedUtc)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |

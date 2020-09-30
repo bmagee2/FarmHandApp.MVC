@@ -22,9 +22,9 @@
 }
 <table class="table">
     <tr>
-        @*<th>
+        <th>
             @Html.DisplayNameFor(model => model.ChoreId)
-        </th>*@
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.ChoreName)
         </th>
@@ -62,9 +62,9 @@
     @foreach (var item in Model)
     {
 <tr>
-    @*<td>
+    <td>
             @Html.DisplayFor(modelItem => item.ChoreId)
-        </td>*@
+        </td>
     <td>
         @Html.DisplayFor(modelItem => item.ChoreName)
     </td>
@@ -95,6 +95,7 @@
     <td>
         @* LIST OF NOTES FOR CHORE*@
         @Html.DisplayFor(modelItem => item.Notes)
+        @Html.ActionLink("Edit", "Edit", new { id = item.ChoreId })
     </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.ChoreId }) |

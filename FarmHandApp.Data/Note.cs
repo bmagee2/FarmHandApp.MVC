@@ -17,19 +17,14 @@ namespace FarmHandApp.Data
         public string UserId {get; set;}
         public virtual ApplicationUser User { get; set; }
 
-        [ForeignKey(nameof(UserChore))]
-        public int UserChoreId { get; set; }
-        public virtual UserChore UserChore { get; set; }
-
         [ForeignKey(nameof(Chore))]
-        public int ChoreId { get; set; }        // needed?
+        public int ChoreId { get; set; }       
         public virtual Chore Chore { get; set; }
 
         [Required]
         public string NoteText { get; set; }
 
-        public DateTimeOffset CreatedUtc { get; set; }
-
-        public DateTimeOffset ModifiedUtc { get; set; }
+        [Required]
+        public bool IsPublished { get; set; }   // get all notes work around -- better option?
     }
 }

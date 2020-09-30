@@ -50,13 +50,13 @@ namespace FarmHandApp.MVC.Controllers
         }
 
         // GET -- Details
-        public ActionResult Details(int id)
-        {
-            var svc = CreateNoteService();
-            var model = svc.GetNoteById(id);
+        //public ActionResult Details(int id)
+        //{
+        //    var svc = CreateNoteService();
+        //    var model = svc.GetNoteById(id);
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
 
         // PUT
 
