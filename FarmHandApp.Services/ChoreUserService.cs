@@ -58,59 +58,59 @@ namespace FarmHandApp.Services
             }
         }
 
-        //// NOTE DETAIL
-        //public NoteDetail GetNoteById(int id)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity =
-        //            ctx
-        //                .Notes
-        //                .Single(e => e.NoteId == id);
-        //        return
-        //            new NoteDetail
-        //            {
-        //                NoteId = entity.NoteId,
-        //                ChoreId = entity.ChoreId,
-        //                NoteTitle = entity.NoteTitle,
-        //                NoteText = entity.NoteText,
-        //                CreatedUtc = entity.CreatedUtc,
-        //                ModifiedUtc = entity.ModifiedUtc
-        //            };
-        //    }
-        //}
+        // DETAIL
+        public ChoreUserDetail GetChoreUserById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .ChoreUsers
+                        .Single(e => e.ChoreUserId == id && e.UserId == _userId.ToString());
+                return
+                    new ChoreUserDetail
+                    {
+                        ChoreUserId = entity.ChoreUserId,
+                        ChoreId = (int)entity.ChoreId,
+                        UserId = entity.UserId,
+                        ChoreIsComplete = entity.ChoreIsComplete
+                    };
+            }
+        }
 
-        //// UPDATE
-        //public bool UpdateNote(NoteEdit model)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity =
-        //            ctx
-        //                .Notes
-        //                .Single(e => e.NoteId == model.NoteId);
+        // UPDATE
+        public bool UpdateChoreUser(ChoreUserEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .ChoreUsers
+                        .Single(e => e.ChoreUserId == model.ChoreUserId && e.UserId == _userId.ToString());
 
-        //        entity.NoteText = model.NoteText;
-        //        entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                entity.ChoreUserId = model.ChoreUserId;
+                entity.UserId = model.UserId;
+                entity.ChoreId = model.ChoreId;
+                entity.ChoreIsComplete = model.ChoreIsComplete;
 
-        //        return ctx.SaveChanges() == 1;
-        //    }
-        //}
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
-        //// DELETE
-        //public bool DeleteNote(int noteId)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity =
-        //            ctx
-        //                .Notes
-        //                .Single(e => e.NoteId == noteId);
+        // DELETE
+        public bool DeleteChoreUser(int choreUserId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .ChoreUsers
+                        .Single(e => e.ChoreUserId == choreUserId);
 
-        //        ctx.Notes.Remove(entity);
+                ctx.ChoreUsers.Remove(entity);
 
-        //        return ctx.SaveChanges() == 1;
-        //    }
-        //}
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

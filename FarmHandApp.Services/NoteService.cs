@@ -117,6 +117,7 @@ namespace FarmHandApp.Services
                         .Notes
                         .Single(e => e.NoteId == model.NoteId);
 
+                entity.NoteTitle = model.NoteTitle;
                 entity.NoteText = model.NoteText;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
 

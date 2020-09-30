@@ -47,6 +47,78 @@ namespace FarmHandApp.MVC.Controllers
             return View(model);
         }
 
+        // GET DETAILS
+        public ActionResult Details(int id)
+        {
+            var svc = CreateChoreUserService();
+            var model = svc.GetChoreUserById(id);
+
+            return View(model);
+        }
+
+        // PUT
+        public ActionResult Edit(int id)
+        {
+            var service = CreateChoreUserService();
+            var detail = service.GetChoreUserById(id);
+            var model =
+                new ChoreUserEdit
+                {
+                    ChoreUserId = detail.ChoreUserId,
+                    UserId = detail.UserId,
+                    ChoreId = detail.ChoreId,
+                    ChoreIsComplete = detail.ChoreIsComplete
+                };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, ChoreUserEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.ChoreUserId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateChoreUserService();
+
+            if (service.UpdateChoreUser(model))
+            {
+                TempData["SaveResult"] = "Chore User was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Chore User could not be updated.");
+            return View(model);
+        }
+
+        // DELETE
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateChoreUserService();
+            var model = svc.GetChoreUserById(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteChoreUser(int id)
+        {
+            var service = CreateChoreUserService();
+
+            service.DeleteChoreUser(id);
+
+            TempData["SaveResult"] = "Chore User was deleted";
+
+            return RedirectToAction("Index");
+        }
 
         // CreateChoreUserService METHOD
         private ChoreUserService CreateChoreUserService()
