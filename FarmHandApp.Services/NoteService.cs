@@ -17,12 +17,6 @@ namespace FarmHandApp.Services
             _userId = userId;
         }
 
-        private readonly int _choreId;
-
-        public NoteService(int choreId)
-        {
-            _choreId = choreId;
-        }
 
         //public bool CreateNote(NoteCreate model)
         //{
@@ -51,6 +45,7 @@ namespace FarmHandApp.Services
                     ChoreId = model.ChoreId,
                     //NoteId = model.NoteId,
                     NoteText = model.NoteText,
+                    IsPublished = model.IsPublished,
                     //CreatedUtc = DateTimeOffset.Now,
                     //ModifiedUtc = DateTimeOffset.Now
                 };
@@ -62,29 +57,29 @@ namespace FarmHandApp.Services
             }
         }
 
-        //public IEnumerable<NoteListItem> GetAllNotes()   // i think this is wrong
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var query =
-        //            ctx
-        //                .Notes
-        //                .Where(e => e.NoteId >= 0)       // GET ALL NOTES FOR A CHORE BY CHOREID OR USERCHOREID?
-        //                .Select(
-        //                    e =>
-        //                        new NoteListItem
-        //                        {
-        //                            NoteId = e.NoteId,
-        //                            ChoreId = e.ChoreId,    // needed?
-        //                            NoteText = e.NoteText,
-        //                            CreatedUtc = e.CreatedUtc,
-        //                            ModifiedUtc = e.ModifiedUtc
-        //                        }
-        //                );
+        public IEnumerable<NoteListItem> GetAllNotes()   
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Notes
+                        .Where(e => e.IsPublished)       // GET ALL NOTES FOR A CHORE BY CHOREID OR USERCHOREID?
+                        .Select(
+                            e =>
+                                new NoteListItem
+                                {
+                                    NoteId = e.NoteId,
+                                    ChoreId = e.ChoreId,    // needed?
+                                    NoteText = e.NoteText,
+                                    //CreatedUtc = e.CreatedUtc,
+                                    //ModifiedUtc = e.ModifiedUtc
+                                }
+                        );
 
-        //        return query.ToArray();
-        //    }
-        //}
+                return query.ToArray();
+            }
+        }
 
 
         //    public NoteDetail GetNoteById(int id)

@@ -15,11 +15,11 @@ namespace FarmHandApp.MVC.Controllers
         // GET: Note
         public ActionResult Index()
         {
-            //var service = CreateNoteService();
-            //var model = service.GetAllNotes();
+            var service = CreateNoteService();
+            var model = service.GetAllNotes();
 
-            //return View(model);
-            return View();
+            return View(model);
+            //return View();
         }
 
 

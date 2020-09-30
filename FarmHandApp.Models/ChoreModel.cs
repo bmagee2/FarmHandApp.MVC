@@ -38,6 +38,7 @@ namespace FarmHandApp.Models
         [Display(Name = "Modified")]
         public DateTimeOffset ModifiedUtc { get; set; }
 
+        [Display(Name = "View Notes")]
         public List<NoteDetail> Notes { get; set; }
     }
 

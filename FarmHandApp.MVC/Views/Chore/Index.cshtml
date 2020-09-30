@@ -95,7 +95,7 @@
     <td>
         @* LIST OF NOTES FOR CHORE*@
         @Html.DisplayFor(modelItem => item.Notes)
-        @Html.ActionLink("Edit", "Edit", new { id = item.ChoreId })
+        @Html.ActionLink("Notes", "Index", "Note")
     </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.ChoreId }) |
