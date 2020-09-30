@@ -19,6 +19,7 @@ namespace FarmHandApp.Services
 
         // CREATE
 
+        // give this a try 
         //public bool CreateNote(NoteCreate model)
         //{
         //    using (var ctx = new ApplicationDbContext())
@@ -62,6 +63,7 @@ namespace FarmHandApp.Services
 
         // DELETE
 
+        // GET ALL NOTES (INDEX)
         public IEnumerable<NoteListItem> GetAllNotes()   
         {
             using (var ctx = new ApplicationDbContext())
@@ -86,7 +88,7 @@ namespace FarmHandApp.Services
             }
         }
 
-
+        // NOTE DETAIL
         public NoteDetail GetNoteById(int id)
         {
             using (var ctx = new ApplicationDbContext())

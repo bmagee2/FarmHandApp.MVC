@@ -17,6 +17,7 @@ namespace FarmHandApp.Services
             _userId = userId;
         }
 
+        // CREATE
         public bool CreateChore(ChoreCreate model)
         {
             var entity =
@@ -41,6 +42,7 @@ namespace FarmHandApp.Services
             }
         }
 
+        // GET ALL CHORES (INDEX)
         public IEnumerable<ChoreListItem> GetAllChores()
         {
             using (var ctx = new ApplicationDbContext())
@@ -68,7 +70,7 @@ namespace FarmHandApp.Services
             }
         }
 
-
+        // DETAIL
         public ChoreDetail GetChoreById(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -94,7 +96,7 @@ namespace FarmHandApp.Services
             }
         }
 
-
+        // GET NOTES FOR EACH CHORE
         public IEnumerable<NoteListItem> GetNotesByChoreId(int id)
         {
             using (var ctx = new ApplicationDbContext())

@@ -58,6 +58,15 @@ namespace FarmHandApp.MVC.Controllers
             return View(model);
         }
 
+        // GET NOTES BY CHOREID
+        public ActionResult ListOfNotesIndex(int id)
+        {
+            var svc = CreateChoreService();
+            var model = svc.GetNotesByChoreId(id);
+
+            return View(model);
+        }
+
         // PUT
 
 
