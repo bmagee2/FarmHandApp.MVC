@@ -40,24 +40,6 @@ namespace FarmHandApp.Services
             }
         }
 
-        // give this a try?? 
-        //public bool CreateNote(NoteCreate model)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var note =
-        //        new Note()
-        //        {
-        //            UserId = _userId.ToString(),
-        //            //NoteId = model.NoteId,
-        //            NoteText = model.NoteText,
-        //            //ChoreId = model.ChoreId,
-        //            //CreatedUtc = DateTimeOffset.Now
-        //        };
-        //        ctx.Notes.Add(note);
-        //        return ctx.SaveChanges() == 1;
-        //    }
-        //}
 
         // GET ALL NOTES (INDEX)
         public IEnumerable<NoteListItem> GetAllNotes()   

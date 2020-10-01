@@ -13,10 +13,13 @@ namespace FarmHandApp.Models
     {
         public int ChoreId { get; set; }
 
-        [Display(Name = "Enter By")]
+        //[Display(Name = "Enter By")]
         public string UserId { get; set; }
 
-        [Display(Name = "Name")]
+        [Display(Name = "Entered By")]
+        public string UserName { get; set; }
+
+       [Display(Name = "Name")]
         public string ChoreName { get; set; }
 
         [Display(Name = "Description")]
@@ -84,8 +87,10 @@ namespace FarmHandApp.Models
     {
         public int ChoreId { get; set; }
 
-        [Display(Name = "Enter By")]
+        //[Display(Name = "Enter By")]
         public string UserId { get; set; }
+        [Display(Name = "Entered By")]
+        public string UserName { get; set; }
 
         [Display(Name = "Name")]
         public string ChoreName { get; set; }

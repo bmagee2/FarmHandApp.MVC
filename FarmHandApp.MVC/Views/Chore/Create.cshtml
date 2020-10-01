@@ -33,19 +33,19 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EnumDropDownListFor(x => x.Location, "Select Location", new { @class = "form-control" })
+            @Html.EnumDropDownListFor(x => x.Location, "", new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.Animal, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EnumDropDownListFor(x => x.Animal, " ", new { @class = "form-control" })
+            @Html.EnumDropDownListFor(x => x.Animal, "", new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.TimeOfDay, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EnumDropDownListFor(x => x.TimeOfDay, " ", new { @class = "form-control" })
+            @Html.EnumDropDownListFor(x => x.TimeOfDay, "", new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">

@@ -17,6 +17,14 @@ namespace FarmHandApp.Data
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
 
+        public string UserName
+        {
+            get
+            {
+                return User.UserName;
+            }
+        }
+
         [Required]
         public string ChoreName { get; set; }
 

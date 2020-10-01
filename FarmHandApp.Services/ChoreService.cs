@@ -63,6 +63,7 @@ namespace FarmHandApp.Services
                                     TimeOfDay = e.TimeOfDay,
                                     IsDaily = e.IsDaily,
                                     UserId = e.UserId,
+                                    //UserName = e.UserName,
                                     CreatedUtc = e.CreatedUtc,
                                     ModifiedUtc = e.ModifiedUtc,
                                     //Notes = e.Notes
@@ -106,6 +107,7 @@ namespace FarmHandApp.Services
                     new ChoreDetail
                     {
                         UserId = entity.UserId,
+                        UserName = entity.UserName,
                         ChoreId = entity.ChoreId,   // this fixed "Id Mismatch" message
                         ChoreName = entity.ChoreName,
                         ChoreDescription = entity.ChoreDescription,
