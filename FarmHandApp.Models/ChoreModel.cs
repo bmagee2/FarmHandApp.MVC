@@ -33,6 +33,8 @@ namespace FarmHandApp.Models
         public bool IsDaily { get; set; }
 
         [Display(Name = "Created")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:2020-01-01}", ApplyFormatInEditMode = true)]
         public DateTimeOffset CreatedUtc { get; set; }
 
         [Display(Name = "Modified")]
@@ -71,6 +73,11 @@ namespace FarmHandApp.Models
         [Required]
         [Display(Name = "Publish Chore?")]
         public bool IsPublished { get; set; }
+
+        [Display(Name = "Created")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:2020-01-01}", ApplyFormatInEditMode = true)]
+        public DateTimeOffset CreatedUtc { get; set; }
     }
 
     public class ChoreDetail
@@ -97,6 +104,8 @@ namespace FarmHandApp.Models
         public bool IsDaily { get; set; }
 
         [Display(Name = "Created")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:2020-01-01}", ApplyFormatInEditMode = true)]
         public DateTimeOffset CreatedUtc { get; set; }
 
         [Display(Name = "Modified")]

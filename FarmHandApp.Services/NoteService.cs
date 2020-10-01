@@ -29,8 +29,8 @@ namespace FarmHandApp.Services
                     NoteTitle = model.NoteTitle,
                     NoteText = model.NoteText,
                     IsPublished = model.IsPublished,
-                    CreatedUtc = DateTimeOffset.Now,
-                    ModifiedUtc = DateTimeOffset.Now
+                    CreatedUtc = DateTime.Now,
+                    ModifiedUtc = DateTime.Now
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -119,7 +119,7 @@ namespace FarmHandApp.Services
 
                 entity.NoteTitle = model.NoteTitle;
                 entity.NoteText = model.NoteText;
-                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                entity.ModifiedUtc = DateTime.Now;
 
                 return ctx.SaveChanges() == 1;
             }

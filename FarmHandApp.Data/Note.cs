@@ -30,8 +30,8 @@ namespace FarmHandApp.Data
         [Required]
         public bool IsPublished { get; set; }   // get all notes work around -- better option?
 
-        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTime CreatedUtc { get; set; }
 
-        public DateTimeOffset ModifiedUtc { get; set; }
+        public DateTime ModifiedUtc { get; set; }
     }
 }

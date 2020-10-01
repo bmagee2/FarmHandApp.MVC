@@ -31,8 +31,8 @@ namespace FarmHandApp.Services
                     TimeOfDay = model.TimeOfDay,
                     IsDaily = model.IsDaily,
                     IsPublished = model.IsPublished,
-                    CreatedUtc = DateTimeOffset.Now,
-                    ModifiedUtc = DateTimeOffset.Now
+                    CreatedUtc = DateTime.Now,
+                    ModifiedUtc = DateTime.Now
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -175,7 +175,7 @@ namespace FarmHandApp.Services
                 entity.Animal = model.Animal;
                 entity.TimeOfDay = model.TimeOfDay;
                 entity.IsDaily = model.IsDaily;
-                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                entity.ModifiedUtc = DateTime.Now;
 
                 return ctx.SaveChanges() == 1;
             }
