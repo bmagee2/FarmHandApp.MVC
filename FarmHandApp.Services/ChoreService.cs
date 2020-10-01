@@ -62,13 +62,36 @@ namespace FarmHandApp.Services
                                     Animal = e.Animal,
                                     TimeOfDay = e.TimeOfDay,
                                     IsDaily = e.IsDaily,
+                                    UserId = e.UserId,
                                     CreatedUtc = e.CreatedUtc,
-                                    ModifiedUtc = e.ModifiedUtc
+                                    ModifiedUtc = e.ModifiedUtc,
+                                    //Notes = e.Notes
                                 }
                         );
                 return query.ToArray();
             }
         }
+
+        //public IEnumerable<ChoreListItem> GetNotesByChoreId(int choreId)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query = ctx.Chores.ToList();
+        //        List<ChoreListItem> Result = new List<ChoreListItem>();
+        //        foreach (Chore e in query)
+        //        {
+        //            if (e.ChoreId == choreId)
+        //            {
+        //                ChoreListItem choreList = new ChoreListItem
+        //                {
+        //                    Notes = e.Notes
+        //                };
+        //                Result.Add(choreList);
+        //            }
+        //        }
+        //        return Result;
+        //    }
+        //}
 
         // DETAIL
         public ChoreDetail GetChoreById(int id)
@@ -91,7 +114,13 @@ namespace FarmHandApp.Services
                         TimeOfDay = entity.TimeOfDay,
                         IsDaily = entity.IsDaily,
                         CreatedUtc = entity.CreatedUtc,
-                        ModifiedUtc = entity.ModifiedUtc
+                        ModifiedUtc = entity.ModifiedUtc,
+                        //Notes = entity.Notes
+                        //Notes = (List<NoteDetail>)entity.Notes.Select(e => new NoteDetail
+                        //{
+                        //    NoteTitle = e.NoteTitle,
+                        //    NoteText = e.NoteText,
+                        //})
                     };
             }
         }

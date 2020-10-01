@@ -15,8 +15,8 @@
             @Html.DisplayNameFor(model => model.NoteId)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.UserChoreId)
-        </th>*@
+                @Html.DisplayNameFor(model => model.UserChoreId)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ChoreId)
         </th>
@@ -35,32 +35,33 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoteId)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.UserChoreId)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.ChoreId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoteText)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.CreatedUtc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedUtc)
-        </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.NoteId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.NoteId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.NoteId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoteId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChoreId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoteTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoteText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedUtc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedUtc)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.NoteId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.NoteId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.NoteId })
+            </td>
+        </tr>
+    }
 
 </table>
