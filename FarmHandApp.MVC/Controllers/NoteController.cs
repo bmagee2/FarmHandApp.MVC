@@ -49,6 +49,26 @@ namespace FarmHandApp.MVC.Controllers
             return View(model);
         }
 
+        // create that takes in ChoreID
+        public ActionResult AddNoteToChore(int choreId)
+        {
+            var model = new NoteCreate();
+            model.ChoreId = choreId;
+
+            if (!ModelState.IsValid) return View(model);
+
+            var service = CreateNoteService();
+
+            if (service.CreateNote(model))
+            {
+                TempData["SaveResult"] = "Note was created.";
+                return RedirectToAction("Index");
+            };
+
+            ModelState.AddModelError("", "Note could not be created.");
+
+            return View(model);
+        }
         // GET DETAILS
         public ActionResult Details(int id)
         {
