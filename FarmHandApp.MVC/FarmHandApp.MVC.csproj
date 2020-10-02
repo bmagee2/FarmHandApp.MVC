@@ -255,6 +255,8 @@
     <Content Include="Views\ChoreUser\Edit.cshtml" />
     <Content Include="Views\ChoreUser\Delete.cshtml" />
     <Content Include="Views\Note\AddNoteToChore.cshtml" />
+    <Content Include="Views\Note\AddNote.cshtml" />
+    <Content Include="Views\Note\ListOfNotesForChore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

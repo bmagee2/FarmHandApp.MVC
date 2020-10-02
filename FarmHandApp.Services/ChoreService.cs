@@ -73,25 +73,42 @@ namespace FarmHandApp.Services
             }
         }
 
-        //public IEnumerable<ChoreListItem> GetNotesByChoreId(int choreId)
+        // Get all notes by choreid??
+        //public IEnumerable<NoteListItem> GetNotesByChoreId(int id)
         //{
         //    using (var ctx = new ApplicationDbContext())
         //    {
-        //        var query = ctx.Chores.ToList();
-        //        List<ChoreListItem> Result = new List<ChoreListItem>();
-        //        foreach (Chore e in query)
-        //        {
-        //            if (e.ChoreId == choreId)
-        //            {
-        //                ChoreListItem choreList = new ChoreListItem
-        //                {
-        //                    Notes = e.Notes
-        //                };
-        //                Result.Add(choreList);
-        //            }
-        //        }
-        //        return Result;
+        //        var entity =
+        //            ctx
+        //            .Notes
+        //            .FirstOrDefault(e => e.ChoreId == id);
+
+        //        List<NoteListItem> noteListItems = entity.Notes;
+
+        //        return CreateListOfNotes;
         //    }
+        //}
+
+        //private IEnumerable<NoteListItem> CreateListOfNotes(IEnumerable<Note> notes)
+        //{
+
+        //    List<NoteListItem> noteListItems = new List<NoteListItem>();
+
+        //    foreach (Note note in notes)
+        //    {
+        //        NoteListItem item = new NoteListItem
+        //        {
+        //            NoteId = note.NoteId,
+        //            ChoreId = note.ChoreId,
+        //            NoteTitle = note.NoteTitle,
+        //            NoteText = note.NoteText,
+        //            CreatedUtc = note.CreatedUtc,
+        //            ModifiedUtc = note.ModifiedUtc
+
+        //        };
+        //        noteListItems.Add(item);
+        //    }
+        //    return noteListItems;
         //}
 
         // DETAIL

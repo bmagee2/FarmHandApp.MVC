@@ -27,7 +27,7 @@ namespace FarmHandApp.Models
 
     public class NoteCreate
     {
-        //public int NoteId { get; set; }
+        public int NoteId { get; set; }
         //public int UserChoreId { get; set; }
         public int ChoreId { get; set; }
 

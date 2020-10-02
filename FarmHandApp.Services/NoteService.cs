@@ -25,7 +25,7 @@ namespace FarmHandApp.Services
                 {
                     UserId = _userId.ToString(),
                     ChoreId = model.ChoreId,
-                    //NoteId = model.NoteId,
+                    NoteId = model.NoteId,
                     NoteTitle = model.NoteTitle,
                     NoteText = model.NoteText,
                     IsPublished = model.IsPublished,
@@ -40,9 +40,64 @@ namespace FarmHandApp.Services
             }
         }
 
+        // Add note to specific chore without having to manually enter choreid
+        //public bool CreateChoreNote(NoteCreate model)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+
+
+        //        var entity =
+        //            new Note()
+        //            {
+        //                UserId = _userId.ToString(),
+        //                ChoreId = model.ChoreId,
+        //                NoteId = model.NoteId,
+        //                NoteTitle = model.NoteTitle,
+        //                NoteText = model.NoteText,
+        //                IsPublished = model.IsPublished,
+        //                CreatedUtc = DateTime.Now,
+        //                ModifiedUtc = DateTime.Now
+        //            };
+
+        //        ctx.Notes.Add(entity);
+        //        return ctx.SaveChanges() == 1;
+        //    }
+        //}
+
+
+        // Get all notes by choreid??
+        //public IEnumerable<NoteListItem> GetNotesByChoreId(int id)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity =
+        //          ctx
+        //          .Notes
+        //          .FirstOrDefault(e => e.ChoreId == id);
+
+        //        List<NoteListItem> noteListItems = new List<NoteListItem>();
+
+        //        foreach (Note item in noteListItems)
+        //        {
+        //                NoteListItem note = new NoteListItem
+        //                {
+        //                    NoteId = item.NoteId,
+        //                    ChoreId = item.ChoreId,
+        //                    NoteTitle = item.NoteTitle,
+        //                    NoteText = item.NoteText,
+        //                    CreatedUtc = item.CreatedUtc,
+        //                    ModifiedUtc = item.ModifiedUtc
+        //                };
+        //                noteListItems.Add(note);
+                   
+        //        }
+        //        return noteListItems;
+        //    }
+        //}
 
         // GET ALL NOTES (INDEX)
-        public IEnumerable<NoteListItem> GetAllNotes()   
+        public IEnumerable<NoteListItem> GetAllNotes()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -55,7 +110,7 @@ namespace FarmHandApp.Services
                                 new NoteListItem
                                 {
                                     NoteId = e.NoteId,
-                                    ChoreId = e.ChoreId,    
+                                    ChoreId = e.ChoreId,
                                     NoteTitle = e.NoteTitle,
                                     NoteText = e.NoteText,
                                     CreatedUtc = e.CreatedUtc,
@@ -75,12 +130,12 @@ namespace FarmHandApp.Services
                 var entity =
                     ctx
                         .Notes
-                        .Single(e => e.NoteId == id);   
+                        .Single(e => e.NoteId == id);
                 return
                     new NoteDetail
                     {
                         NoteId = entity.NoteId,
-                        ChoreId = entity.ChoreId,    
+                        ChoreId = entity.ChoreId,
                         NoteTitle = entity.NoteTitle,
                         NoteText = entity.NoteText,
                         CreatedUtc = entity.CreatedUtc,

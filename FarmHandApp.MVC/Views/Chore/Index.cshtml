@@ -96,12 +96,13 @@
                 @* LIST OF NOTES FOR CHORE*@
                 @Html.DisplayFor(modelItem => item.Notes)
                 @Html.ActionLink("Notes", "Index", "Note")
+                @Html.ActionLink("View Notes", "ListOfNotesForChore", "Note", new { id = item.ChoreId }, null)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ChoreId }) |
                 @Html.ActionLink("Details", "Details", new { id = item.ChoreId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ChoreId })
-                @Html.ActionLink("Add Note", "AddNoteToChore", "Note", new { id = item.ChoreId }, null)
+                @Html.ActionLink("Add Note", "Create", "Note", new { id = item.ChoreId }, null)
             </td>
         </tr>
     }
