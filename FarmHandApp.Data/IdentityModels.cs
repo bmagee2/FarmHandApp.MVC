@@ -38,6 +38,8 @@ namespace FarmHandApp.Data
         public DbSet<Chore> Chores { get; set; }
         public DbSet<ChoreUser> ChoreUsers { get; set; }
         public DbSet<Note> Notes { get; set; }
+        public DbSet<Bulletin> Bulletins { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
