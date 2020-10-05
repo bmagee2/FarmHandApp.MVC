@@ -79,8 +79,9 @@ namespace FarmHandApp.MVC.Controllers
 
             // CHANGE HERE TO FIX INVALID LOGIN ERROR
 
-            ApplicationDbContext _db = new ApplicationDbContext();
+            ApplicationDbContext _db = new ApplicationDbContext();  // ADDED
 
+            // ADDED
             var user = _db.Users.Where(u => u.Email.Equals(model.Email)).Single(); // where db is ApplicationDbContext instance
             var result = await SignInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)

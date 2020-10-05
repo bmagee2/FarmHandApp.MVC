@@ -37,7 +37,7 @@ namespace FarmHandApp.Models
 
         [Display(Name = "Created")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:2020-01-01}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTimeOffset CreatedUtc { get; set; }
 
         [Display(Name = "Modified")]
@@ -79,7 +79,7 @@ namespace FarmHandApp.Models
 
         [Display(Name = "Created")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:2020-01-01}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTimeOffset CreatedUtc { get; set; }
     }
 
@@ -110,7 +110,7 @@ namespace FarmHandApp.Models
 
         [Display(Name = "Created")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:2020-01-01}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTimeOffset CreatedUtc { get; set; }
 
         [Display(Name = "Modified")]
