@@ -22,6 +22,7 @@ namespace FarmHandApp.MVC.Controllers
             //return View();
         }
 
+        
 
         // GET -- Create
         public ActionResult Create()
@@ -110,13 +111,12 @@ namespace FarmHandApp.MVC.Controllers
         }
 
         // GET all notes for one chore
-        //public ActionResult ListOfNotesForChore(int id)
-        //{
-        //    var svc = CreateNoteService();
-        //    var model = svc.GetNotesByChoreId(id);
-
-        //    return View(model);
-        //}
+        public ActionResult ListOfNotesForChore(int id)
+        {
+            var service = CreateNoteService();
+            var model = service.GetNotesByChoreId(id);
+            return View(model);
+        }
 
         // PUT
         public ActionResult Edit(int id)
