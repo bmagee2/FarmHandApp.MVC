@@ -42,12 +42,12 @@ namespace FarmHandApp.Data
         [Required]
         public bool IsDaily { get; set; }
 
-        [Required]
+        //[Required]
         public bool IsPublished { get; set; }   // get all chores work around -- better option?
 
-        public DateTime CreatedUtc { get; set; }
+        public DateTimeOffset CreatedUtc { get; set; }
 
-        public DateTime ModifiedUtc { get; set; }
+        public DateTimeOffset ModifiedUtc { get; set; }
 
         public virtual List<Note> Notes { get; set; }
     }
@@ -68,7 +68,7 @@ namespace FarmHandApp.Data
         Sheep,
         Arapawa_Goats,
         Saanen_Goats,
-        Cows,
+        Cattle,
         Donkeys,
         Chickens,
         Pigs,

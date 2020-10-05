@@ -36,8 +36,8 @@ namespace FarmHandApp.Services
                     NoteTitle = model.NoteTitle,
                     NoteText = model.NoteText,
                     IsPublished = model.IsPublished,
-                    CreatedUtc = DateTime.Now,
-                    ModifiedUtc = DateTime.Now
+                    CreatedUtc = DateTimeOffset.Now,
+                    ModifiedUtc = DateTimeOffset.Now
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -82,7 +82,7 @@ namespace FarmHandApp.Services
                 var query =
                     ctx
                         .Notes
-                        .Where(e => e.IsPublished)       // GET ALL NOTES FOR A CHORE BY CHOREID OR USERCHOREID?
+                        .Where(e => e.IsPublished)       
                         .Select(
                             e =>
                                 new NoteListItem
@@ -120,6 +120,7 @@ namespace FarmHandApp.Services
                         {
                             NoteId = item.NoteId,
                             ChoreId = item.ChoreId,
+                            UserName = item.UserName,
                             NoteTitle = item.NoteTitle,
                             NoteText = item.NoteText,
                             CreatedUtc = item.CreatedUtc,
@@ -197,6 +198,7 @@ namespace FarmHandApp.Services
                     {
                         NoteId = entity.NoteId,
                         ChoreId = entity.ChoreId,
+                        UserName = entity.UserName,
                         NoteTitle = entity.NoteTitle,
                         NoteText = entity.NoteText,
                         CreatedUtc = entity.CreatedUtc,
@@ -217,7 +219,7 @@ namespace FarmHandApp.Services
 
                 entity.NoteTitle = model.NoteTitle;
                 entity.NoteText = model.NoteText;
-                entity.ModifiedUtc = DateTime.Now;
+                entity.ModifiedUtc = DateTimeOffset.Now;
 
                 return ctx.SaveChanges() == 1;
             }

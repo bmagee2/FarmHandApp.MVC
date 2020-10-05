@@ -12,6 +12,9 @@ namespace FarmHandApp.Models
         public int NoteId { get; set; }
         public int ChoreId { get; set; }
 
+        [Display(Name = "Entered By")]
+        public string UserName { get; set; }
+
         [Display(Name = "Note Title")]
         public string NoteTitle { get; set; }
 
@@ -28,7 +31,6 @@ namespace FarmHandApp.Models
     public class NoteCreate
     {
         public int NoteId { get; set; }
-        //public int UserChoreId { get; set; }
         public int ChoreId { get; set; }
 
         [Required]
@@ -48,6 +50,9 @@ namespace FarmHandApp.Models
     {
         public int NoteId { get; set; }
         public int ChoreId { get; set; }
+
+        [Display(Name = "Entered By")]
+        public string UserName { get; set; }
 
         [Display(Name = "Note Title")]
         public string NoteTitle { get; set; }

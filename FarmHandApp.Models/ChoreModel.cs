@@ -73,7 +73,7 @@ namespace FarmHandApp.Models
         [Display(Name = "Daily Chore?")]
         public bool IsDaily { get; set; }
 
-        [Required]
+        //[Required]
         [Display(Name = "Publish Chore?")]
         public bool IsPublished { get; set; }
 
@@ -89,6 +89,7 @@ namespace FarmHandApp.Models
 
         //[Display(Name = "Enter By")]
         public string UserId { get; set; }
+
         [Display(Name = "Entered By")]
         public string UserName { get; set; }
 

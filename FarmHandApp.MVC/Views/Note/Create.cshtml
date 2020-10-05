@@ -25,13 +25,19 @@
         @*@Html.HiddenFor(model => model.NoteId)*@
         @*@Html.HiddenFor(model => model.ChoreId)*@
         <div class="form-group">
-                @Html.LabelFor(model => model.ChoreId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ChoreId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ChoreId, "", new { @class = "text-danger" })
-                </div>
+            @Html.LabelFor(model => model.ChoreId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ChoreId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ChoreId, "", new { @class = "text-danger" })
             </div>
-
+        </div>
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.NoteAuthor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NoteAuthor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NoteAuthor, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
         <div class="form-group">
             @Html.LabelFor(model => model.NoteTitle, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

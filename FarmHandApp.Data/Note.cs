@@ -17,6 +17,14 @@ namespace FarmHandApp.Data
         public string UserId {get; set;}
         public virtual ApplicationUser User { get; set; }
 
+        public string UserName
+        {
+            get
+            {
+                return User.UserName;
+            }
+        }
+
         [ForeignKey(nameof(Chore))]
         public int ChoreId { get; set; }       
         public virtual Chore Chore { get; set; }
@@ -30,8 +38,8 @@ namespace FarmHandApp.Data
         [Required]
         public bool IsPublished { get; set; }   // get all notes work around -- better option?
 
-        public DateTime CreatedUtc { get; set; }
+        public DateTimeOffset CreatedUtc { get; set; }
 
-        public DateTime ModifiedUtc { get; set; }
+        public DateTimeOffset ModifiedUtc { get; set; }
     }
 }

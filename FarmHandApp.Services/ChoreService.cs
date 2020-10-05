@@ -30,7 +30,7 @@ namespace FarmHandApp.Services
                     Animal = model.Animal,
                     TimeOfDay = model.TimeOfDay,
                     IsDaily = model.IsDaily,
-                    IsPublished = model.IsPublished,
+                    //IsPublished = model.IsPublished,
                     CreatedUtc = DateTime.Now,
                     ModifiedUtc = DateTime.Now
                 };
@@ -50,7 +50,7 @@ namespace FarmHandApp.Services
                 var query =
                     ctx
                         .Chores
-                        .Where(e => e.IsPublished) // view all bool (view by manager only or all staff?) -- better option?
+                        .Where(e => e.ChoreId >= 0) // view all bool (view by manager only or all staff?) -- better option?
                         .Select(
                             e =>
                                 new ChoreListItem
