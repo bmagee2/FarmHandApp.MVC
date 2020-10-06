@@ -35,7 +35,7 @@ namespace FarmHandApp.Services
                     NoteId = model.NoteId,
                     NoteTitle = model.NoteTitle,
                     NoteText = model.NoteText,
-                    IsPublished = model.IsPublished,
+                    //IsPublished = model.IsPublished,
                     CreatedUtc = DateTimeOffset.Now,
                     ModifiedUtc = DateTimeOffset.Now
                 };
@@ -82,7 +82,8 @@ namespace FarmHandApp.Services
                 var query =
                     ctx
                         .Notes
-                        .Where(e => e.IsPublished)       
+                        //.Where(e => e.IsPublished)
+                        .Where(e => e.UserId == _userId.ToString())
                         .Select(
                             e =>
                                 new NoteListItem

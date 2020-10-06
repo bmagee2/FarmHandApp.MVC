@@ -41,9 +41,9 @@ namespace FarmHandApp.Models
         [MaxLength(2000)]
         public string NoteText { get; set; }
 
-        [Required]
-        [Display(Name = "Add Note to Chore?")]
-        public bool IsPublished { get; set; }
+        //[Required]
+        //[Display(Name = "Add Note to Chore?")]
+        //public bool IsPublished { get; set; }
     }
 
     public class NoteDetail
