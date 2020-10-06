@@ -7,13 +7,13 @@
 <h2>ListOfNotesForChore</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Back to Chores", "Index", "Chore")
 </p>
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.NoteId)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ChoreId)
         </th>
@@ -34,9 +34,9 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.NoteId)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.ChoreId)
         </td>

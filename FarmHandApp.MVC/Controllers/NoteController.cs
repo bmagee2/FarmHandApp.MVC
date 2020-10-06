@@ -45,6 +45,7 @@ namespace FarmHandApp.MVC.Controllers
             {
                 TempData["SaveResult"] = "Note was created.";
                 return RedirectToAction("Index");
+                //return RedirectToAction("ListOfNotesForChore", "Note"); // this path doesn't work
             };
 
             ModelState.AddModelError("", "Note could not be created.");

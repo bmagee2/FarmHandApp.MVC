@@ -7,13 +7,13 @@
 <h2>ListOfCommentsForBulletin</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Back to Farm Bulletin", "Index", "Bulletin")
 </p>
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.CommentId)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.BulletinId)
         </th>
@@ -34,9 +34,9 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.CommentId)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.BulletinId)
         </td>
