@@ -16,8 +16,11 @@ namespace FarmHandApp.Models
         [Display(Name = "Entered By")]
         public string UserName { get; set; }
 
+        [Display(Name = "Headline")]
         public string BulletinTitle { get; set; }
 
+        [Display(Name = "Bulletin")]
+        [DataType(DataType.MultilineText)]
         public string BulletinText { get; set; }
 
         [Display(Name = "Created")]
@@ -40,9 +43,13 @@ namespace FarmHandApp.Models
 
         //[Display(Name = "Entered By")]
         //public string UserName { get; set; }
-
+        [Required]
+        [Display(Name = "Headline")]
         public string BulletinTitle { get; set; }
 
+        [Required]
+        [Display(Name = "Bulletin")]
+        [DataType(DataType.MultilineText)]
         public string BulletinText { get; set; }
 
         [Display(Name = "Created")]
@@ -61,8 +68,10 @@ namespace FarmHandApp.Models
         [Display(Name = "Entered By")]
         public string UserName { get; set; }
 
+        [Display(Name = "Headline")]
         public string BulletinTitle { get; set; }
 
+        [Display(Name = "Bulletin")]
         public string BulletinText { get; set; }
 
         [Display(Name = "Created")]
@@ -84,8 +93,10 @@ namespace FarmHandApp.Models
         [Display(Name = "Entered By")]
         public string UserName { get; set; }
 
+        [Display(Name = "Headline")]
         public string BulletinTitle { get; set; }
 
+        [Display(Name = "Bulletin")]
         public string BulletinText { get; set; }
 
         [Display(Name = "Created")]

@@ -216,7 +216,7 @@ namespace FarmHandApp.Services
                 var entity =
                     ctx
                         .Notes
-                        .Single(e => e.NoteId == model.NoteId);
+                        .Single(e => e.NoteId == model.NoteId && e.UserId == _userId.ToString());
 
                 entity.NoteTitle = model.NoteTitle;
                 entity.NoteText = model.NoteText;
@@ -234,7 +234,7 @@ namespace FarmHandApp.Services
                 var entity =
                     ctx
                         .Notes
-                        .Single(e => e.NoteId == noteId);
+                        .Single(e => e.NoteId == noteId && e.UserId == _userId.ToString());
 
                 ctx.Notes.Remove(entity);
 

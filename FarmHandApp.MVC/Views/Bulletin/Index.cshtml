@@ -7,7 +7,7 @@
 <h2>Farm Bulletin</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add Bulletin", "Create")
 </p>
 <table class="table">
     <tr>
@@ -52,7 +52,8 @@
                 @Html.DisplayFor(modelItem => item.BulletinTitle)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BulletinText)
+                                                                @*ROWS FOR MULTILINE TEXT DATATYPE*@
+                @Html.DisplayFor(modelItem => item.BulletinText, new { htmlAttributes = new { rows = 10 } })
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedUtc)

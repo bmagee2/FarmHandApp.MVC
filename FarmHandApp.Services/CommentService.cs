@@ -126,7 +126,7 @@ namespace FarmHandApp.Services
                 var entity =
                     ctx
                         .Comments
-                        .Single(e => e.CommentId == model.CommentId);
+                        .Single(e => e.CommentId == model.CommentId && e.UserId == _userId.ToString());
 
                 entity.CommentText = model.CommentText;
                 entity.ModifiedUtc = DateTimeOffset.Now;
@@ -143,7 +143,7 @@ namespace FarmHandApp.Services
                 var entity =
                     ctx
                         .Comments
-                        .Single(e => e.CommentId == commentId);
+                        .Single(e => e.CommentId == commentId && e.UserId == _userId.ToString());
 
                 ctx.Comments.Remove(entity);
 
