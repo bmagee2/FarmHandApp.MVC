@@ -37,4 +37,4 @@ namespace FarmHandApp.Data
         public DateTimeOffset ModifiedUtc { get; set; }
     }
 }
-}
+

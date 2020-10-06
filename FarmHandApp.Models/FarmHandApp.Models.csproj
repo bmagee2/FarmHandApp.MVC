@@ -54,8 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BulletinModel.cs" />
     <Compile Include="ChoreModel.cs" />
     <Compile Include="ChoreUserModel.cs" />
+    <Compile Include="CommentModel.cs" />
     <Compile Include="NoteModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

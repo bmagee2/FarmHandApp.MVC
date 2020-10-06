@@ -31,8 +31,8 @@ namespace FarmHandApp.Services
                     TimeOfDay = model.TimeOfDay,
                     IsDaily = model.IsDaily,
                     //IsPublished = model.IsPublished,
-                    CreatedUtc = DateTime.Now,
-                    ModifiedUtc = DateTime.Now
+                    CreatedUtc = DateTimeOffset.Now,
+                    ModifiedUtc = DateTimeOffset.Now
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -134,12 +134,6 @@ namespace FarmHandApp.Services
                         IsDaily = entity.IsDaily,
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc,
-                        //Notes = entity.Notes
-                        //Notes = (List<NoteDetail>)entity.Notes.Select(e => new NoteDetail
-                        //{
-                        //    NoteTitle = e.NoteTitle,
-                        //    NoteText = e.NoteText,
-                        //})
                     };
             }
         }

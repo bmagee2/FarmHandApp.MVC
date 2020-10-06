@@ -168,8 +168,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BulletinController.cs" />
     <Compile Include="Controllers\ChoreController.cs" />
     <Compile Include="Controllers\ChoreUserController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
@@ -257,9 +259,15 @@
     <Content Include="Views\Note\AddNoteToChore.cshtml" />
     <Content Include="Views\Note\AddNote.cshtml" />
     <Content Include="Views\Note\ListOfNotesForChore.cshtml" />
+    <Content Include="Views\Bulletin\Index.cshtml" />
+    <Content Include="Views\Bulletin\Create.cshtml" />
+    <Content Include="Views\Bulletin\Details.cshtml" />
+    <Content Include="Views\Bulletin\Edit.cshtml" />
+    <Content Include="Views\Bulletin\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Comment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
