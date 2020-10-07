@@ -17,7 +17,7 @@ namespace FarmHandApp.Services
             _userId = userId;
         }
 
-        // CREATE NOTE
+        // CREATE COMMENT
         public bool CreateComment(CommentCreate model)
         {
             var entity =
@@ -38,7 +38,7 @@ namespace FarmHandApp.Services
             }
         }
 
-        // GET ALL NOTES (INDEX)
+        // GET ALL COMMENTS (INDEX)
         public IEnumerable<CommentListItem> GetAllComments()
         {
             using (var ctx = new ApplicationDbContext())

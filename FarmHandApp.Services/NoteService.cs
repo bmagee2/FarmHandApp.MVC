@@ -12,7 +12,7 @@ namespace FarmHandApp.Services
     {
         private readonly Guid _userId;
 
-        //private readonly ApplicationDbContext _dbContext;
+        //private ApplicationDbContext _db = new ApplicationDbContext();
 
         public NoteService(Guid userId)
         {
@@ -47,32 +47,85 @@ namespace FarmHandApp.Services
             }
         }
 
-        // Add note to specific chore without having to manually enter choreid
-        //public bool CreateChoreNote(NoteCreate model)
+        // Add note to specific chore without having to manually enter choreid -- combine create & edit or delete??
+
+        public bool CreateChoreNote(NoteCreate model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                // GET CHORE BY CHOREID -- like in Edit
+                //.Single(e => e.ChoreId == model.ChoreId)
+                //var chore = GetChoreById(int id);
+
+                //CREATE NEW NOTE
+                var entity =
+                    new Note()
+                    {
+                        UserId = _userId.ToString(),
+                        ChoreId = model.ChoreId,
+                        NoteId = model.NoteId,
+                        NoteTitle = model.NoteTitle,
+                        NoteText = model.NoteText,
+                        //IsPublished = model.IsPublished,
+                        CreatedUtc = DateTimeOffset.Now,
+                        ModifiedUtc = DateTimeOffset.Now
+                    };
+
+                ctx.Notes.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        //public bool GetChoreById(int choreId)
         //{
         //    using (var ctx = new ApplicationDbContext())
         //    {
+        //        //var entity =
+        //        //    ctx
+        //        //        .Chores
+        //        //        .Single(e => e.ChoreId == choreId);
 
+        //        //ctx.Chores.Remove(entity);
 
+        //        //return ctx.Chores.Single(e => e.ChoreId == choreId); // can't be a bool
+        //    }
+        //}
+        //public bool UpdateChore(ChoreEdit model)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
         //        var entity =
-        //            new Note()
-        //            {
-        //                UserId = _userId.ToString(),
-        //                ChoreId = model.ChoreId,
-        //                NoteId = model.NoteId,
-        //                NoteTitle = model.NoteTitle,
-        //                NoteText = model.NoteText,
-        //                IsPublished = model.IsPublished,
-        //                CreatedUtc = DateTime.Now,
-        //                ModifiedUtc = DateTime.Now
-        //            };
+        //            ctx
+        //                .Chores
+        //                .Single(e => e.ChoreId == model.ChoreId);
 
-        //        ctx.Notes.Add(entity);
+        //        entity.ChoreName = model.ChoreName;
+        //        entity.ChoreDescription = model.ChoreDescription;
+        //        entity.Location = model.Location;
+        //        entity.Animal = model.Animal;
+        //        entity.TimeOfDay = model.TimeOfDay;
+        //        entity.IsDaily = model.IsDaily;
+        //        entity.ModifiedUtc = DateTime.Now;
+
         //        return ctx.SaveChanges() == 1;
         //    }
         //}
 
-       
+        //public bool DeleteChore(int choreId)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity =
+        //            ctx
+        //                .Chores
+        //                .Single(e => e.ChoreId == choreId);
+
+        //        ctx.Chores.Remove(entity);
+
+        //        return ctx.SaveChanges() == 1;
+        //    }
+        //}
+
 
         // GET ALL NOTES (INDEX)
         public IEnumerable<NoteListItem> GetAllNotes()
@@ -101,7 +154,7 @@ namespace FarmHandApp.Services
             }
         }
 
-        // GET ALL NOTE BY CHOREID
+        // GET ALL NOTES BY CHOREID
         public IEnumerable<NoteListItem> GetNotesByChoreId(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -134,56 +187,7 @@ namespace FarmHandApp.Services
             }
         }
 
-        // Test
-        //public IEnumerable<NoteListItem> GetNotesByChoreId(int id)
-        //{
-        //    var entity =
-        //        List < NoteListItem > noteListItems = new List<NoteListItem>();
-
-        //    _dbContext
-        //        .Notes
-        //        .Where(e => e.ChoreId == id)
-        //        .ToList();
-        //    return entity.Select(e => new NoteListItem
-        //    {
-        //        NoteId = e.NoteId,
-        //        ChoreId = e.ChoreId,
-        //        NoteTitle = e.NoteTitle,
-        //        NoteText = e.NoteText,
-        //        CreatedUtc = e.CreatedUtc,
-        //        ModifiedUtc = e.ModifiedUtc
-        //    });
-        //}
-
-        // Get all notes by choreid??
-        //public IEnumerable<NoteListItem> GetNotesByChoreId(int id)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity =
-        //          ctx
-        //          .Notes
-        //          .FirstOrDefault(e => e.ChoreId == id);
-
-        //        List<NoteListItem> noteListItems = new List<NoteListItem>();
-
-        //        foreach (Note item in noteListItems)
-        //        {
-        //                NoteListItem note = new NoteListItem
-        //                {
-        //                    NoteId = item.NoteId,
-        //                    ChoreId = item.ChoreId,
-        //                    NoteTitle = item.NoteTitle,
-        //                    NoteText = item.NoteText,
-        //                    CreatedUtc = item.CreatedUtc,
-        //                    ModifiedUtc = item.ModifiedUtc
-        //                };
-        //                noteListItems.Add(note);
-
-        //        }
-        //        return noteListItems;
-        //    }
-        //}
+        
 
         // NOTE DETAIL
         public NoteDetail GetNoteById(int id)
