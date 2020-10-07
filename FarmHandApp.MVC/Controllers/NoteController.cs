@@ -22,32 +22,32 @@ namespace FarmHandApp.MVC.Controllers
             //return View();
         }
 
-        // GET -- Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //// GET -- Create
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
-        // POST -- Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(NoteCreate model)
-        {
-            if (!ModelState.IsValid) return View(model);
+        //// POST -- Create
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(NoteCreate model)
+        //{
+        //    if (!ModelState.IsValid) return View(model);
 
-            var service = CreateNoteService();
+        //    var service = CreateNoteService();
 
-            if (service.CreateNote(model))
-            {
-                TempData["SaveResult"] = "Note was created.";
-                return RedirectToAction("Index");
-                //return RedirectToAction("ListOfNotesForChore", "Note"); // this path doesn't work
-            };
+        //    if (service.CreateNote(model))
+        //    {
+        //        TempData["SaveResult"] = "Note was created.";
+        //        return RedirectToAction("Index");
+        //        //return RedirectToAction("ListOfNotesForChore", "Note"); // this path doesn't work
+        //    };
 
-            ModelState.AddModelError("", "Note could not be created.");
+        //    ModelState.AddModelError("", "Note could not be created.");
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
 
 
         // GET ALL NOTES FOR ONE CHORE BY ID
@@ -71,12 +71,12 @@ namespace FarmHandApp.MVC.Controllers
         public ActionResult CreateNoteWithChoreId(int id)  // id is ChoreId, not noteId
         {
             var service = CreateNoteService();
-            var detail = service.GetChoreById(id);   // this id needs to GetChoreById
+            var detail = service.GetChoreById(id);   // this id is ChoreId so need a GetChoreById method in service
 
             var model =
-                new NoteCreate
+                new NoteCreate  // like edit but create new note
                 {
-                    NoteId = detail.NoteId,
+                    //NoteId = detail.NoteId,
                     ChoreId = detail.ChoreId
                 };
 
@@ -86,15 +86,15 @@ namespace FarmHandApp.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(int id, NoteCreate model)
+        public ActionResult Create(NoteCreate model)    // not saving note
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (model.ChoreId != id)
-            {
-                ModelState.AddModelError("", "Id Mismatch");
-                return View(model);
-            }
+            //if (model.ChoreId != id)    
+            //{
+            //    ModelState.AddModelError("", "Id Mismatch");
+            //    return View(model);
+            //}
 
             var service = CreateNoteService();
 

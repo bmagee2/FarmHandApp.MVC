@@ -53,9 +53,10 @@ namespace FarmHandApp.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                // GET CHORE BY CHOREID -- like in Edit
+                // GET CHORE BY CHOREID -- like in Edit 
                 //.Single(e => e.ChoreId == model.ChoreId)
-                //var chore = GetChoreById(int id);
+                //var chore = ctx.Chores.Single(e => e.ChoreId == model.ChoreId);
+                var chore = GetChoreById(model.ChoreId);    // need GetChoreById for controller
 
                 //CREATE NEW NOTE
                 var entity =
@@ -76,20 +77,20 @@ namespace FarmHandApp.Services
             }
         }
 
-        //public bool GetChoreById(int choreId)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        //var entity =
-        //        //    ctx
-        //        //        .Chores
-        //        //        .Single(e => e.ChoreId == choreId);
+        public Chore GetChoreById(int choreId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                //var entity =
+                //    ctx
+                //        .Chores
+                //        .Single(e => e.ChoreId == choreId);
 
-        //        //ctx.Chores.Remove(entity);
+                //ctx.Chores.Remove(entity);
 
-        //        //return ctx.Chores.Single(e => e.ChoreId == choreId); // can't be a bool
-        //    }
-        //}
+                return ctx.Chores.Single(e => e.ChoreId == choreId); // can't be a bool...
+            }
+        }
         //public bool UpdateChore(ChoreEdit model)
         //{
         //    using (var ctx = new ApplicationDbContext())
