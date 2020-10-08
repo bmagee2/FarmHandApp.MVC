@@ -28,7 +28,7 @@ namespace FarmHandApp.MVC.Controllers
         //    return View();
         //}
 
-        //// POST -- Create
+        // POST -- Create
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         //public ActionResult Create(NoteCreate model)
@@ -86,11 +86,11 @@ namespace FarmHandApp.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(NoteCreate model)    // not saving note
+        public ActionResult CreateNoteWithChoreId(NoteCreate model)    // MATCH THE METHOD NAMES!!
         {
             if (!ModelState.IsValid) return View(model);
 
-            //if (model.ChoreId != id)    
+            //if (model.ChoreId != id)
             //{
             //    ModelState.AddModelError("", "Id Mismatch");
             //    return View(model);
@@ -101,7 +101,7 @@ namespace FarmHandApp.MVC.Controllers
             if (service.CreateChoreNote(model))
             {
                 TempData["SaveResult"] = "Note was created.";
-                return RedirectToAction("Index");
+                return RedirectToAction("ListOfNotesForChore", new { id = model.ChoreId});
             };
 
             ModelState.AddModelError("", "Note could not be created.");
