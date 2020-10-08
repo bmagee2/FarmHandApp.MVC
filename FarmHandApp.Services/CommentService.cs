@@ -38,6 +38,38 @@ namespace FarmHandApp.Services
             }
         }
 
+        // Create comment with BulletinId
+        public bool CreateBulletinComment(CommentCreate model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var bulletin = GetBulletinById(model.BulletinId);
+
+                var entity =
+                    new Comment()
+                    {
+                        UserId = _userId.ToString(),
+                        BulletinId = model.BulletinId,
+                        CommentId = model.CommentId,
+                        CommentText = model.CommentText,
+                        CreatedUtc = DateTimeOffset.Now,
+                        ModifiedUtc = DateTimeOffset.Now
+                    };
+
+                ctx.Comments.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public Bulletin GetBulletinById(int bulletinId)     // method already in BulletinService 
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return ctx.Bulletins.Single(e => e.BulletinId == bulletinId);
+            }
+        }
+
+
         // GET ALL COMMENTS (INDEX)
         public IEnumerable<CommentListItem> GetAllComments()
         {
@@ -63,7 +95,7 @@ namespace FarmHandApp.Services
             }
         }
 
-        // GET ALL COMMENTS BY BULLETINID
+        // GET ALL COMMENTS BY BULLETINID -- not the best way to do this
         public IEnumerable<CommentListItem> GetCommentsByBulletinId(int id)
         {
             using (var ctx = new ApplicationDbContext())

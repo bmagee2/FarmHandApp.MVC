@@ -120,7 +120,7 @@ namespace FarmHandApp.Services
             }
         }
 
-        // GET ALL NOTES BY CHOREID
+        // GET ALL NOTES BY CHOREID -- not the best way to do this
         public IEnumerable<NoteListItem> GetNotesByChoreId(int id)
         {
             using (var ctx = new ApplicationDbContext())

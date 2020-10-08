@@ -51,6 +51,7 @@ namespace FarmHandApp.Services
                     ctx
                         .Chores
                         .Where(e => e.ChoreId >= 0) // view all bool (view by manager only or all staff?) -- better option?
+                        //.ToList()   // CHANGED
                         .Select(
                             e =>
                                 new ChoreListItem
@@ -66,7 +67,8 @@ namespace FarmHandApp.Services
                                     //UserName = e.UserName,
                                     CreatedUtc = e.CreatedUtc,
                                     ModifiedUtc = e.ModifiedUtc,
-                                    //Notes = e.Notes
+                                    //Notes
+                                    //Notes = ConvertDataEntitiesToViewModel(e.Notes.ToList())
                                 }
                         );
                 return query.ToArray();
@@ -82,7 +84,7 @@ namespace FarmHandApp.Services
                 var entity =
                     ctx
                         .Chores
-                        .Single(e => e.ChoreId == id); 
+                        .Single(e => e.ChoreId == id);
                 return
                     new ChoreDetail
                     {
@@ -101,7 +103,60 @@ namespace FarmHandApp.Services
                     };
             }
         }
+        //public ChoreDetail GetChoreById(int id)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity =
+        //            ctx
+        //                .Chores
+        //                .SingleOrDefault(e => e.ChoreId == id);     // CHANGED
+        //        var detail =    // CHANGED
+        //            new ChoreDetail
+        //            {
+        //                UserId = entity.UserId,
+        //                UserName = entity.UserName,
+        //                ChoreId = entity.ChoreId,   // this fixed "Id Mismatch" message
+        //                ChoreName = entity.ChoreName,
+        //                ChoreDescription = entity.ChoreDescription,
+        //                Location = entity.Location,
+        //                Animal = entity.Animal,
+        //                TimeOfDay = entity.TimeOfDay,
+        //                IsDaily = entity.IsDaily,
+        //                CreatedUtc = entity.CreatedUtc,
+        //                ModifiedUtc = entity.ModifiedUtc,
+        //                //Get All Notes for this chore
+        //                //Notes = ConvertDataEntitiesToViewModel(entity.Notes.ToList())
+        //            };
+        //        return detail;  // CHANGED
+        //    }
+        //}
 
+        // ADDED METHOD
+        //public List<NoteListItem> ConvertDataEntitiesToViewModel(List<Note> notes)
+        //{
+        //    // instantiate a new List<NoteListItem>**
+
+        //    List<NoteListItem> returnList = new List<NoteListItem>();
+
+        //    // foreach through my entity.AllNotes
+        //    foreach (var note in notes)
+        //    {
+        //        //create a new NoteListItem
+        //        var noteListItem = new NoteListItem();
+
+        //        // assign it the values from the entity.AllNotes[i],
+        //        noteListItem.NoteId = note.NoteId;
+        //        noteListItem.NoteTitle = note.NoteTitle;
+        //        noteListItem.NoteText = note.NoteText;
+        //        noteListItem.CreatedUtc = note.CreatedUtc;
+
+        //        // add NoteListItem to my List<NoteListItem>**
+        //        returnList.Add(noteListItem);
+        //    }
+        //    //  return that List<NoteListItem>**
+        //    return returnList;
+        //}
 
         public bool UpdateChore(ChoreEdit model)
         {

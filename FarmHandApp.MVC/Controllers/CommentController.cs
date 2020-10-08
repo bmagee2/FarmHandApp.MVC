@@ -20,30 +20,79 @@ namespace FarmHandApp.MVC.Controllers
             return View(model);
         }
 
-        // GET -- Create
-        public ActionResult Create()
+        //// GET -- Create
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
+
+
+
+        //// POST -- Create
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(CommentCreate model)
+        //{
+        //    if (!ModelState.IsValid) return View(model);
+
+        //    var service = CreateCommentService();
+
+        //    if (service.CreateComment(model))
+        //    {
+        //        TempData["SaveResult"] = "Comment was created.";
+        //        return RedirectToAction("Index");
+        //    };
+
+        //    ModelState.AddModelError("", "Comment could not be created.");
+
+        //    return View(model);
+        //}
+
+        //// CREATE COMMENT WITH BULLETINID
+        public ActionResult CreateCommentWithBulletinId(int id)
         {
-            return View();
+            var service = CreateCommentService();
+            var detail = service.GetBulletinById(id);
+
+            var model =
+                new CommentCreate
+                {
+                    BulletinId = detail.BulletinId
+                };
+
+            return View(model);
         }
 
+        //// WITH VIEWBAG
+        //public ActionResult CreateCommentWithBulletinId(int id)
+        //{
+        //    var service = CreateBulletinService();
+        //    ViewBag.BulletinDetail = service.GetBulletinById(id);
 
+        //    var model =
+        //        new CommentCreate
+        //        {
+        //            BulletinId = id
+        //        };
 
-        // POST -- Create
+        //    return View(model);
+        //}
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CommentCreate model)
+        public ActionResult CreateCommentWithBulletinId(CommentCreate model)    // MATCH THE METHOD NAMES!!
         {
             if (!ModelState.IsValid) return View(model);
 
             var service = CreateCommentService();
 
-            if (service.CreateComment(model))
+            if (service.CreateBulletinComment(model))
             {
-                TempData["SaveResult"] = "Comment was created.";
-                return RedirectToAction("Index");
+                TempData["SaveResult"] = "Note was created.";
+                return RedirectToAction("ListOfCommentsForBulletin", new { id = model.BulletinId });
             };
 
-            ModelState.AddModelError("", "Comment could not be created.");
+            ModelState.AddModelError("", "Note could not be created.");
 
             return View(model);
         }

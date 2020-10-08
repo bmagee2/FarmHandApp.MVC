@@ -71,7 +71,7 @@
                 @Html.ActionLink("Edit", "Edit", new { id = item.BulletinId }) |
                 @Html.ActionLink("Details", "Details", new { id = item.BulletinId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.BulletinId }) |
-                @Html.ActionLink("Add Comment", "Create", "Comment", new { id = item.BulletinId }, null)
+                @Html.ActionLink("Add Comment", "CreateCommentWithBulletinId", "Comment", new { id = item.BulletinId }, null)
             </td>
         </tr>
     }
