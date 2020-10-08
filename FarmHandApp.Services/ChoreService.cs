@@ -97,6 +97,7 @@ namespace FarmHandApp.Services
                         IsDaily = entity.IsDaily,
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc,
+                        //Get All Notes for this chore
                     };
             }
         }

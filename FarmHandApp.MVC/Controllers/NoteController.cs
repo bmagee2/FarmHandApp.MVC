@@ -83,6 +83,20 @@ namespace FarmHandApp.MVC.Controllers
             return View(model);
         }
 
+        //public ActionResult CreateNoteWithChoreId(int id)  // id is ChoreId, not noteId
+        //{
+        //    var service = CreateNoteService();
+        //    ViewBag.ChoreDetail = service.GetChoreById(id);   // this id is ChoreId so need a GetChoreById method in service
+
+        //    var model =
+        //        new NoteCreate  // like edit but create new note
+        //        {
+        //            NoteId = detail.NoteId,
+        //            ChoreId = id
+        //        };
+
+        //    return View(model);
+        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -101,7 +115,7 @@ namespace FarmHandApp.MVC.Controllers
             if (service.CreateChoreNote(model))
             {
                 TempData["SaveResult"] = "Note was created.";
-                return RedirectToAction("ListOfNotesForChore", new { id = model.ChoreId});
+                return RedirectToAction("ListOfNotesForChore", new { id = model.ChoreId});  // ADDED 
             };
 
             ModelState.AddModelError("", "Note could not be created.");

@@ -56,7 +56,10 @@
                 @Html.DisplayFor(modelItem => item.BulletinText, new { htmlAttributes = new { rows = 10 } })
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CreatedUtc)
+                @{
+                    string createdUtc = item.CreatedUtc.ToString("d");
+                }
+                @Html.DisplayFor(modelItem => createdUtc)
             </td>
             @*<td>
                     @Html.DisplayFor(modelItem => item.ModifiedUtc)

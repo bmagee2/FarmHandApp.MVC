@@ -81,7 +81,10 @@
                     @Html.DisplayFor(modelItem => item.IsDaily)
                 </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.CreatedUtc)
+                @{
+                    string createdUtc = item.CreatedUtc.ToString("d");
+                }
+                @Html.DisplayFor(modelItem => createdUtc)
             </td>
             @*<td>
                     @Html.DisplayFor(modelItem => item.ModifiedUtc)
@@ -97,6 +100,7 @@
                 @Html.ActionLink("Details", "Details", new { id = item.ChoreId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ChoreId }) |
                 @Html.ActionLink("Add Note", "CreateNoteWithChoreId", "Note", new { id = item.ChoreId }, null)
+                @Html.ActionLink("Add Chore User", "Create", "ChoreUser", new { id = item.ChoreUser }, null)
             </td>
         </tr>
     }

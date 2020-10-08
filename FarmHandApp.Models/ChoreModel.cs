@@ -45,6 +45,8 @@ namespace FarmHandApp.Models
 
         [Display(Name = "View Notes")]
         public List<NoteDetail> Notes { get; set; }
+
+        public ChoreUser ChoreUser { get; set; }
     }
 
     public class ChoreCreate

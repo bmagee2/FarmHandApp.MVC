@@ -47,10 +47,16 @@
             @Html.DisplayFor(modelItem => item.CommentText)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CreatedUtc)
+            @{
+                string createdUtc = item.CreatedUtc.ToString("d");
+            }
+            @Html.DisplayFor(modelItem => createdUtc)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ModifiedUtc)
+            @{
+                string modifiedUtc = item.ModifiedUtc.ToString("d");
+            }
+            @Html.DisplayFor(modelItem => modifiedUtc)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.CommentId }) |

@@ -91,42 +91,7 @@ namespace FarmHandApp.Services
                 return ctx.Chores.Single(e => e.ChoreId == choreId); // can't be a bool...
             }
         }
-        //public bool UpdateChore(ChoreEdit model)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity =
-        //            ctx
-        //                .Chores
-        //                .Single(e => e.ChoreId == model.ChoreId);
-
-        //        entity.ChoreName = model.ChoreName;
-        //        entity.ChoreDescription = model.ChoreDescription;
-        //        entity.Location = model.Location;
-        //        entity.Animal = model.Animal;
-        //        entity.TimeOfDay = model.TimeOfDay;
-        //        entity.IsDaily = model.IsDaily;
-        //        entity.ModifiedUtc = DateTime.Now;
-
-        //        return ctx.SaveChanges() == 1;
-        //    }
-        //}
-
-        //public bool DeleteChore(int choreId)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity =
-        //            ctx
-        //                .Chores
-        //                .Single(e => e.ChoreId == choreId);
-
-        //        ctx.Chores.Remove(entity);
-
-        //        return ctx.SaveChanges() == 1;
-        //    }
-        //}
-
+        
 
         // GET ALL NOTES (INDEX)
         public IEnumerable<NoteListItem> GetAllNotes()
