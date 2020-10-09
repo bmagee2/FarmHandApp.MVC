@@ -269,6 +269,7 @@
     <Content Include="Views\Comment\Delete.cshtml" />
     <Content Include="Views\Note\CreateNoteWithChoreId.cshtml" />
     <Content Include="Views\Comment\CreateCommentWithBulletinId.cshtml" />
+    <Content Include="Views\ChoreUser\CreateChoreUserWithChoreId.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
