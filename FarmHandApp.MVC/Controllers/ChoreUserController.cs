@@ -47,6 +47,57 @@ namespace FarmHandApp.MVC.Controllers
             return View(model);
         }
 
+        // CREATE CHOREUSER WITH CHOREID
+        public ActionResult CreateChoreUserWithChoreId(int id)  
+        {
+            var service = CreateChoreUserService();
+            var detail = service.GetChoreById(id);   
+
+            var model =
+                new ChoreUserCreate  
+                {
+                    ChoreId = detail.ChoreId
+                };
+
+            return View(model);
+        }
+
+        //// WITH VIEWBAG
+        //public ActionResult CreateNoteWithChoreId(int id)
+        //{
+        //    var service = CreateChoreService();     // changed to CreateChoreService because GetChoreById method already in there
+        //    ViewBag.ChoreDetail = service.GetChoreById(id);   // GetChoreById method already in Choreservice
+
+        //    var model =
+        //        new NoteCreate  // like edit but create new note
+        //        {
+        //            NoteId = detail.NoteId,
+        //            ChoreId = id
+        //        };
+
+        //    return View(model);
+        //}
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateChoreUserWithChoreId(ChoreUserCreate model)    
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var service = CreateChoreUserService();
+
+            if (service.CreateChoreUser(model))
+            {
+                TempData["SaveResult"] = "ChoreUser was created.";
+                //return RedirectToAction("ListOfChoreUsersForChore", new { id = model.ChoreId }); 
+                return RedirectToAction("Index");
+            };
+
+            ModelState.AddModelError("", "ChoreUser could not be created.");
+
+            return View(model);
+        }
+
         // GET DETAILS
         public ActionResult Details(int id)
         {

@@ -17,8 +17,8 @@ namespace FarmHandApp.Services
             _userId = userId;
         }
 
-        // CREATE NOTE
-        public bool CreateChoreUser(ChoreUserCreate model)
+        // CREATE 
+        public bool Create(ChoreUserCreate model)
         {
             var entity =
                 new ChoreUser()
@@ -31,6 +31,35 @@ namespace FarmHandApp.Services
             {
                 ctx.ChoreUsers.Add(entity);
                 return ctx.SaveChanges() == 1;
+            }
+        }
+
+        // CREATE CHOREUSER WITH CHOREID
+        public bool CreateChoreUser(ChoreUserCreate model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                
+                var chore = GetChoreById(model.ChoreId);    
+
+                var entity =
+                    new ChoreUser()
+                    {
+                        UserId = _userId.ToString(),
+                        ChoreId = model.ChoreId,
+                        ChoreIsComplete = model.ChoreIsComplete
+                    };
+
+                ctx.ChoreUsers.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public Chore GetChoreById(int choreId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return ctx.Chores.Single(e => e.ChoreId == choreId); 
             }
         }
 

@@ -100,7 +100,7 @@
                 @Html.ActionLink("Details", "Details", new { id = item.ChoreId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ChoreId }) |
                 @Html.ActionLink("Add Note", "CreateNoteWithChoreId", "Note", new { id = item.ChoreId }, null)
-                @Html.ActionLink("Add Chore User", "Create", "ChoreUser", new { id = item.ChoreUser }, null)
+                @Html.ActionLink("Add Chore User", "CreateChoreUserWithChoreId", "ChoreUser", new { id = item.ChoreId }, null)
             </td>
         </tr>
     }
