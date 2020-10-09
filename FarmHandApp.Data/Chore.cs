@@ -17,6 +17,14 @@ namespace FarmHandApp.Data
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
 
+        public string UserName
+        {
+            get
+            {
+                return User.UserName;
+            }
+        }
+
         [Required]
         public string ChoreName { get; set; }
 
@@ -34,7 +42,7 @@ namespace FarmHandApp.Data
         [Required]
         public bool IsDaily { get; set; }
 
-        [Required]
+        //[Required]
         public bool IsPublished { get; set; }   // get all chores work around -- better option?
 
         public DateTimeOffset CreatedUtc { get; set; }
@@ -60,7 +68,7 @@ namespace FarmHandApp.Data
         Sheep,
         Arapawa_Goats,
         Saanen_Goats,
-        Cows,
+        Cattle,
         Donkeys,
         Chickens,
         Pigs,
@@ -70,6 +78,7 @@ namespace FarmHandApp.Data
     public enum TimeOfDay
     {
         Morning,
-        Evening
+        Evening,
+        Morning_and_Evening
     }
 }

@@ -1,4 +1,4 @@
-﻿@model FarmHandApp.Models.NoteDetail
+﻿@model FarmHandApp.Models.BulletinDetail
 
 @{
     ViewBag.Title = "Details";
@@ -7,24 +7,24 @@
 <h2>Details</h2>
 
 <div>
-    <h4>NoteDetail</h4>
+    <h4>BulletinDetail</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.NoteId)
+            @Html.DisplayNameFor(model => model.BulletinId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NoteId)
+            @Html.DisplayFor(model => model.BulletinId)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ChoreId)
+        @*<dt>
+            @Html.DisplayNameFor(model => model.UserId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ChoreId)
-        </dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.UserName)
@@ -35,21 +35,22 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NoteTitle)
+            @Html.DisplayNameFor(model => model.BulletinTitle)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NoteTitle)
+            @Html.DisplayFor(model => model.BulletinTitle)
         </dd>
+
         <dt>
-            @Html.DisplayNameFor(model => model.NoteText)
+            @Html.DisplayNameFor(model => model.BulletinText)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NoteText)
+            @Html.DisplayFor(model => model.BulletinText)
         </dd>
 
-        @*<dt>
+        <dt>
             @Html.DisplayNameFor(model => model.CreatedUtc)
         </dt>
 
@@ -63,11 +64,11 @@
 
         <dd>
             @Html.DisplayFor(model => model.ModifiedUtc)
-        </dd>*@
+        </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.NoteId }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BulletinId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace FarmHandApp.Data
 {
-    public class Note
+    public class Bulletin
     {
         [Key]
-        public int NoteId { get; set; }
+        public int BulletinId { get; set; }
 
         [ForeignKey(nameof(User))]
-        public string UserId {get; set;}
+        public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
 
         public string UserName
@@ -25,21 +25,16 @@ namespace FarmHandApp.Data
             }
         }
 
-        [ForeignKey(nameof(Chore))]
-        public int ChoreId { get; set; }       
-        public virtual Chore Chore { get; set; }
+        [Required]
+        public string BulletinTitle { get; set; }
 
         [Required]
-        public string NoteTitle { get; set; }
-
-        [Required]
-        public string NoteText { get; set; }
-
-        [Required]
-        public bool IsPublished { get; set; }   // get all notes work around -- better option?
+        public string BulletinText { get; set; }
 
         public DateTimeOffset CreatedUtc { get; set; }
 
         public DateTimeOffset ModifiedUtc { get; set; }
+
+        public virtual List<Comment> Comments { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model FarmHandApp.Models.NoteDetail
+﻿@model FarmHandApp.Models.CommentDetail
 
 @{
     ViewBag.Title = "Details";
@@ -7,23 +7,23 @@
 <h2>Details</h2>
 
 <div>
-    <h4>NoteDetail</h4>
+    <h4>CommentDetail</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.NoteId)
+            @Html.DisplayNameFor(model => model.CommentId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NoteId)
+            @Html.DisplayFor(model => model.CommentId)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ChoreId)
+            @Html.DisplayNameFor(model => model.BulletinId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ChoreId)
+            @Html.DisplayFor(model => model.BulletinId)
         </dd>
 
         <dt>
@@ -35,21 +35,14 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NoteTitle)
+            @Html.DisplayNameFor(model => model.CommentText)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NoteTitle)
+            @Html.DisplayFor(model => model.CommentText)
         </dd>
+
         <dt>
-            @Html.DisplayNameFor(model => model.NoteText)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NoteText)
-        </dd>
-
-        @*<dt>
             @Html.DisplayNameFor(model => model.CreatedUtc)
         </dt>
 
@@ -63,11 +56,11 @@
 
         <dd>
             @Html.DisplayFor(model => model.ModifiedUtc)
-        </dd>*@
+        </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.NoteId }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CommentId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

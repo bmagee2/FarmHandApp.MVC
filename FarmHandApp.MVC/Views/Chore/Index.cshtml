@@ -40,18 +40,15 @@
         <th>
             @Html.DisplayNameFor(model => model.TimeOfDay)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDaily)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserId)
-        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.IsDaily)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.CreatedUtc)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedUtc)
-        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.ModifiedUtc)
+            </th>*@
         <th>
             @* LIST OF NOTES FOR CHORE*@
             @Html.DisplayNameFor(model => model.Notes)
@@ -61,48 +58,51 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-            @Html.DisplayFor(modelItem => item.ChoreId)
-        </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ChoreName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ChoreDescription)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Location)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Animal)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.TimeOfDay)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.IsDaily)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.UserId)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CreatedUtc)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ModifiedUtc)
-    </td>
-    <td>
-        @* LIST OF NOTES FOR CHORE*@
-        @Html.DisplayFor(modelItem => item.Notes)
-        @Html.ActionLink("Notes", "Index", "Note")
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.ChoreId }) |
-        @Html.ActionLink("Details", "Details", new { id = item.ChoreId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.ChoreId })
-    </td>
-</tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChoreId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChoreName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChoreDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Animal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeOfDay)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.IsDaily)
+                </td>*@
+            <td>
+                @{
+                    string createdUtc = item.CreatedUtc.ToString("d");
+                }
+                @Html.DisplayFor(modelItem => createdUtc)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.ModifiedUtc)
+                </td>*@
+            <td>
+                @* LIST OF NOTES FOR CHORE*@
+                @Html.DisplayFor(modelItem => item.Notes)
+                @*@Html.ActionLink("Notes", "Index", "Note")*@
+                @Html.ActionLink("View Notes", "ListOfNotesForChore", "Note", new { id = item.ChoreId }, null)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ChoreId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ChoreId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ChoreId }) |
+                @Html.ActionLink("Add Note", "CreateNoteWithChoreId", "Note", new { id = item.ChoreId }, null)
+                @Html.ActionLink("Add Chore User", "Create", "ChoreUser", new { id = item.ChoreUser }, null)
+            </td>
+        </tr>
     }
 
 </table>

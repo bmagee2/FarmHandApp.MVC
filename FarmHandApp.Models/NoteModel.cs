@@ -12,6 +12,9 @@ namespace FarmHandApp.Models
         public int NoteId { get; set; }
         public int ChoreId { get; set; }
 
+        [Display(Name = "Entered By")]
+        public string UserName { get; set; }
+
         [Display(Name = "Note Title")]
         public string NoteTitle { get; set; }
 
@@ -27,8 +30,7 @@ namespace FarmHandApp.Models
 
     public class NoteCreate
     {
-        //public int NoteId { get; set; }
-        //public int UserChoreId { get; set; }
+        public int NoteId { get; set; }
         public int ChoreId { get; set; }
 
         [Required]
@@ -39,15 +41,18 @@ namespace FarmHandApp.Models
         [MaxLength(2000)]
         public string NoteText { get; set; }
 
-        [Required]
-        [Display(Name = "Add Note to Chore?")]
-        public bool IsPublished { get; set; }
+        //[Required]
+        //[Display(Name = "Add Note to Chore?")]
+        //public bool IsPublished { get; set; }
     }
 
     public class NoteDetail
     {
         public int NoteId { get; set; }
         public int ChoreId { get; set; }
+
+        [Display(Name = "Entered By")]
+        public string UserName { get; set; }
 
         [Display(Name = "Note Title")]
         public string NoteTitle { get; set; }

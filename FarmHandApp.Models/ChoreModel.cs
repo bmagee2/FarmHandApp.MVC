@@ -13,10 +13,13 @@ namespace FarmHandApp.Models
     {
         public int ChoreId { get; set; }
 
-        [Display(Name = "Enter By")]
+        //[Display(Name = "Enter By")]
         public string UserId { get; set; }
 
-        [Display(Name = "Name")]
+        [Display(Name = "Entered By")]
+        public string UserName { get; set; }
+
+       [Display(Name = "Name")]
         public string ChoreName { get; set; }
 
         [Display(Name = "Description")]
@@ -33,6 +36,8 @@ namespace FarmHandApp.Models
         public bool IsDaily { get; set; }
 
         [Display(Name = "Created")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTimeOffset CreatedUtc { get; set; }
 
         [Display(Name = "Modified")]
@@ -40,6 +45,8 @@ namespace FarmHandApp.Models
 
         [Display(Name = "View Notes")]
         public List<NoteDetail> Notes { get; set; }
+
+        public ChoreUser ChoreUser { get; set; }
     }
 
     public class ChoreCreate
@@ -68,17 +75,25 @@ namespace FarmHandApp.Models
         [Display(Name = "Daily Chore?")]
         public bool IsDaily { get; set; }
 
-        [Required]
+        //[Required]
         [Display(Name = "Publish Chore?")]
         public bool IsPublished { get; set; }
+
+        [Display(Name = "Created")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTimeOffset CreatedUtc { get; set; }
     }
 
     public class ChoreDetail
     {
         public int ChoreId { get; set; }
 
-        [Display(Name = "Enter By")]
+        //[Display(Name = "Enter By")]
         public string UserId { get; set; }
+
+        [Display(Name = "Entered By")]
+        public string UserName { get; set; }
 
         [Display(Name = "Name")]
         public string ChoreName { get; set; }
@@ -97,11 +112,13 @@ namespace FarmHandApp.Models
         public bool IsDaily { get; set; }
 
         [Display(Name = "Created")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTimeOffset CreatedUtc { get; set; }
 
         [Display(Name = "Modified")]
         public DateTimeOffset ModifiedUtc { get; set; }
-        public List<Note> Notes { get; set; }
+        public List<NoteDetail> Notes { get; set; }
     }
 
     public class ChoreEdit

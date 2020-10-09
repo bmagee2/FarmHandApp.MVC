@@ -168,8 +168,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BulletinController.cs" />
     <Compile Include="Controllers\ChoreController.cs" />
     <Compile Include="Controllers\ChoreUserController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
@@ -246,7 +248,6 @@
     <Content Include="Views\Note\Create.cshtml" />
     <Content Include="Views\Note\Details.cshtml" />
     <Content Include="Views\Note\Index.cshtml" />
-    <Content Include="Views\Note\ListOfNotesIndex.cshtml" />
     <Content Include="Views\Note\Edit.cshtml" />
     <Content Include="Views\Note\Delete.cshtml" />
     <Content Include="Views\ChoreUser\Index.cshtml" />
@@ -254,6 +255,20 @@
     <Content Include="Views\ChoreUser\Details.cshtml" />
     <Content Include="Views\ChoreUser\Edit.cshtml" />
     <Content Include="Views\ChoreUser\Delete.cshtml" />
+    <Content Include="Views\Note\ListOfNotesForChore.cshtml" />
+    <Content Include="Views\Bulletin\Index.cshtml" />
+    <Content Include="Views\Bulletin\Create.cshtml" />
+    <Content Include="Views\Bulletin\Details.cshtml" />
+    <Content Include="Views\Bulletin\Edit.cshtml" />
+    <Content Include="Views\Bulletin\Delete.cshtml" />
+    <Content Include="Views\Comment\Index.cshtml" />
+    <Content Include="Views\Comment\Create.cshtml" />
+    <Content Include="Views\Comment\ListOfCommentsForBulletin.cshtml" />
+    <Content Include="Views\Comment\Details.cshtml" />
+    <Content Include="Views\Comment\Edit.cshtml" />
+    <Content Include="Views\Comment\Delete.cshtml" />
+    <Content Include="Views\Note\CreateNoteWithChoreId.cshtml" />
+    <Content Include="Views\Comment\CreateCommentWithBulletinId.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

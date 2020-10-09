@@ -30,7 +30,7 @@ namespace FarmHandApp.Services
                     Animal = model.Animal,
                     TimeOfDay = model.TimeOfDay,
                     IsDaily = model.IsDaily,
-                    IsPublished = model.IsPublished,
+                    //IsPublished = model.IsPublished,
                     CreatedUtc = DateTimeOffset.Now,
                     ModifiedUtc = DateTimeOffset.Now
                 };
@@ -50,7 +50,8 @@ namespace FarmHandApp.Services
                 var query =
                     ctx
                         .Chores
-                        .Where(e => e.IsPublished) // view all bool (view by manager only or all staff?) -- better option?
+                        .Where(e => e.ChoreId >= 0) // view all bool (view by manager only or all staff?) -- better option?
+                        //.ToList()   // CHANGED
                         .Select(
                             e =>
                                 new ChoreListItem
@@ -62,13 +63,18 @@ namespace FarmHandApp.Services
                                     Animal = e.Animal,
                                     TimeOfDay = e.TimeOfDay,
                                     IsDaily = e.IsDaily,
+                                    UserId = e.UserId,
+                                    //UserName = e.UserName,
                                     CreatedUtc = e.CreatedUtc,
-                                    ModifiedUtc = e.ModifiedUtc
+                                    ModifiedUtc = e.ModifiedUtc,
+                                    //Notes
+                                    //Notes = ConvertDataEntitiesToViewModel(e.Notes.ToList())
                                 }
                         );
                 return query.ToArray();
             }
         }
+
 
         // DETAIL
         public ChoreDetail GetChoreById(int id)
@@ -78,11 +84,12 @@ namespace FarmHandApp.Services
                 var entity =
                     ctx
                         .Chores
-                        .Single(e => e.ChoreId == id); 
+                        .Single(e => e.ChoreId == id);
                 return
                     new ChoreDetail
                     {
                         UserId = entity.UserId,
+                        UserName = entity.UserName,
                         ChoreId = entity.ChoreId,   // this fixed "Id Mismatch" message
                         ChoreName = entity.ChoreName,
                         ChoreDescription = entity.ChoreDescription,
@@ -91,44 +98,64 @@ namespace FarmHandApp.Services
                         TimeOfDay = entity.TimeOfDay,
                         IsDaily = entity.IsDaily,
                         CreatedUtc = entity.CreatedUtc,
-                        ModifiedUtc = entity.ModifiedUtc
+                        ModifiedUtc = entity.ModifiedUtc,
+                        //Get All Notes for this chore
                     };
             }
         }
-
-        // GET NOTES FOR EACH CHORE --- don't think I need this
-        //public IEnumerable<NoteListItem> GetNotesByChoreId(int id)
+        //public ChoreDetail GetChoreById(int id)
         //{
         //    using (var ctx = new ApplicationDbContext())
         //    {
         //        var entity =
-        //          ctx
-        //              .Chores
-        //              .FirstOrDefault(e => e.ChoreId == id);
-
-        //        IEnumerable<Note> notes = entity.Notes;
-
-        //        return CreateListOfNotes(notes);
+        //            ctx
+        //                .Chores
+        //                .SingleOrDefault(e => e.ChoreId == id);     // CHANGED
+        //        var detail =    // CHANGED
+        //            new ChoreDetail
+        //            {
+        //                UserId = entity.UserId,
+        //                UserName = entity.UserName,
+        //                ChoreId = entity.ChoreId,   // this fixed "Id Mismatch" message
+        //                ChoreName = entity.ChoreName,
+        //                ChoreDescription = entity.ChoreDescription,
+        //                Location = entity.Location,
+        //                Animal = entity.Animal,
+        //                TimeOfDay = entity.TimeOfDay,
+        //                IsDaily = entity.IsDaily,
+        //                CreatedUtc = entity.CreatedUtc,
+        //                ModifiedUtc = entity.ModifiedUtc,
+        //                //Get All Notes for this chore
+        //                //Notes = ConvertDataEntitiesToViewModel(entity.Notes.ToList())
+        //            };
+        //        return detail;  // CHANGED
         //    }
         //}
 
-        //private IEnumerable<NoteListItem> CreateListOfNotes(IEnumerable<Note> notes)
+        // ADDED METHOD
+        //public List<NoteListItem> ConvertDataEntitiesToViewModel(List<Note> notes)
         //{
+        //    // instantiate a new List<NoteListItem>**
 
-        //    List<NoteListItem> noteListItems = new List<NoteListItem>();
+        //    List<NoteListItem> returnList = new List<NoteListItem>();
 
-        //    foreach (Note note in notes)
+        //    // foreach through my entity.AllNotes
+        //    foreach (var note in notes)
         //    {
-        //        NoteListItem noteListItem = new NoteListItem
-        //        {
-        //            ChoreId = note.ChoreId,
-        //            NoteId = note.NoteId,
-        //            NoteText = note.NoteText
+        //        //create a new NoteListItem
+        //        var noteListItem = new NoteListItem();
 
-        //        };
-        //        noteListItems.Add(noteListItem);
+        //        // assign it the values from the entity.AllNotes[i],
+        //        noteListItem.NoteId = note.NoteId;
+        //        noteListItem.NoteTitle = note.NoteTitle;
+        //        noteListItem.NoteText = note.NoteText;
+        //        noteListItem.CreatedUtc = note.CreatedUtc;
+
+        //        // add NoteListItem to my List<NoteListItem>**
+        //        returnList.Add(noteListItem);
         //    }
-        //    return noteListItems;
+        //    //  return that List<NoteListItem>**
+        //    return returnList;
         //}
 
         public bool UpdateChore(ChoreEdit model)
@@ -146,7 +173,7 @@ namespace FarmHandApp.Services
                 entity.Animal = model.Animal;
                 entity.TimeOfDay = model.TimeOfDay;
                 entity.IsDaily = model.IsDaily;
-                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                entity.ModifiedUtc = DateTime.Now;
 
                 return ctx.SaveChanges() == 1;
             }

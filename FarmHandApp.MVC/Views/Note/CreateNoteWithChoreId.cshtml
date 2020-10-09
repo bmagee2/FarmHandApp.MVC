@@ -1,43 +1,39 @@
 ﻿@model FarmHandApp.Models.NoteCreate
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "CreateNoteWithChoreId";
 }
 
-<h2>Add Note</h2>
+<h2>CreateNoteWithChoreId</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
-        <h4>Add Note</h4>
+        <h4>NoteCreate</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @*<div class="form-group">
-                @Html.LabelFor(model => model.NoteId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.NoteId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.NoteId, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-        @*@Html.HiddenFor(model => model.NoteId)*@
-        @*@Html.HiddenFor(model => model.ChoreId)*@
+            @Html.LabelFor(model => model.NoteId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NoteId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NoteId, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        @*ViewBag.ChoreDetail.*@
+
         <div class="form-group">
             @Html.LabelFor(model => model.ChoreId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ChoreId, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.DisplayFor(model => model.ChoreId, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.ChoreId, "", new { @class = "text-danger" })
             </div>
         </div>
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.NoteAuthor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NoteAuthor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NoteAuthor, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+
         <div class="form-group">
             @Html.LabelFor(model => model.NoteTitle, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -49,18 +45,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.NoteText, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NoteText, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.NoteText, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.TextAreaFor(model => model.NoteText, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NoteText, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.IsPublished, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IsPublished, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IsPublished, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
@@ -70,7 +60,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to Chores", "Index", "Chore")
+    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {

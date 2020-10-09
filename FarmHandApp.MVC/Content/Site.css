@@ -22,3 +22,28 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.register {
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+footer {
+    margin-bottom: 0;
+}
+
+.box {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+
+
+.jumbotron {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color: #eeeeee;
+}

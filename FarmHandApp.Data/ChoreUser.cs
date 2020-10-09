@@ -24,6 +24,5 @@ namespace FarmHandApp.Data
         [Required]
         public bool ChoreIsComplete { get; set; }
 
-        // public virtual List<Chore> Chores { get; set; } ??
     }
 }
