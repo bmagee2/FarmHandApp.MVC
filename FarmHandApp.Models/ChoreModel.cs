@@ -44,7 +44,7 @@ namespace FarmHandApp.Models
         public DateTimeOffset ModifiedUtc { get; set; }
 
         [Display(Name = "View Notes")]
-        public List<NoteDetail> Notes { get; set; }
+        public virtual List<NoteListItem> Notes { get; set; }
 
         public ChoreUser ChoreUser { get; set; }
     }
@@ -118,7 +118,7 @@ namespace FarmHandApp.Models
 
         [Display(Name = "Modified")]
         public DateTimeOffset ModifiedUtc { get; set; }
-        public List<NoteDetail> Notes { get; set; }
+        public virtual List<NoteListItem> Notes { get; set; }
     }
 
     public class ChoreEdit

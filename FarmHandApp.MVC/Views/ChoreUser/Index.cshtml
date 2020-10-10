@@ -27,25 +27,32 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        @*<td>
+<tr>
+    @*<ul class="list-group">
+        <li class="list-group-item active">@Html.DisplayFor(modelItem => item.ChoreId)</li>
+        <li class="list-group-item">@Html.DisplayFor(modelItem => item.ChoreIsComplete)</li>
+        <li class="list-group-item">@Html.ActionLink("Mark as Complete", "Edit", new { id = item.ChoreUserId })</li>
+        
+    </ul>*@
+
+    @*<td>
             @Html.DisplayFor(modelItem => item.ChoreUserId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UserId)
         </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.ChoreId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChoreIsComplete)
-        </td>
-        <td>
-            @Html.ActionLink("Mark as Complete", "Edit", new { id = item.ChoreUserId }) 
-            @*@Html.ActionLink("Details", "Details", new { id = item.ChoreUserId }) |
+    <td>
+        @Html.DisplayFor(modelItem => item.ChoreId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ChoreIsComplete)
+    </td>
+    <td>
+        @Html.ActionLink("Mark as Complete", "Edit", new { id = item.ChoreUserId })
+        @*@Html.ActionLink("Details", "Details", new { id = item.ChoreUserId }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.ChoreUserId })*@
-        </td>
-    </tr>
+    </td>
+</tr>
 }
 
 </table>

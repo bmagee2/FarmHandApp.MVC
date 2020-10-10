@@ -62,6 +62,11 @@ namespace FarmHandApp.MVC.Controllers
         {
             var service = CreateChoreService();
             var detail = service.GetChoreById(id);
+
+            var noteService = CreateNoteService();
+            //var notes = noteService.GetNotesByChoreId();
+            //ViewBag.Note = "Detail";
+
             var model =
                 new ChoreEdit
                 {
@@ -124,6 +129,13 @@ namespace FarmHandApp.MVC.Controllers
             return RedirectToAction("Index");
         }
 
+
+        private NoteService CreateNoteService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new NoteService(userId);
+            return service;
+        }
 
         // CreateChoreService METHOD
         private ChoreService CreateChoreService()

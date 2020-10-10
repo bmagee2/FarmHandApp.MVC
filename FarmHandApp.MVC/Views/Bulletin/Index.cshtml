@@ -32,12 +32,18 @@
         @*<th>
                 @Html.DisplayNameFor(model => model.ModifiedUtc)
             </th>*@
-        <th></th> 
+        <th></th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">@Html.DisplayFor(modelItem => item.BulletinTitle)</h1>
+                <p class="lead">@Html.DisplayFor(modelItem => item.BulletinText, new { htmlAttributes = new { rows = 10 } })</p>
+            </div>
+        </div>
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.BulletinId)
@@ -52,7 +58,7 @@
                 @Html.DisplayFor(modelItem => item.BulletinTitle)
             </td>
             <td>
-                                                                @*ROWS FOR MULTILINE TEXT DATATYPE*@
+                @*ROWS FOR MULTILINE TEXT DATATYPE*@
                 @Html.DisplayFor(modelItem => item.BulletinText, new { htmlAttributes = new { rows = 10 } })
             </td>
             <td>

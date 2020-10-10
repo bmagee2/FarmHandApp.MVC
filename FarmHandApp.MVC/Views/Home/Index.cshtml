@@ -2,16 +2,27 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <div class="col-sm-5">
-        <h1>logo</h1>
+@if (User.Identity.IsAuthenticated == false)
+{
+    <div class="row">
+        <div class="logo col-sm-5">
+            <h1>logo</h1>
+            <img src="~/Content/Assets/DL-logo.png" width="300" height="300" />
+        </div>
+        <div class="about col-sm-5">
+            <h1>The Farm Hand App</h1>
+            <p class="lead">A simple ASP.NET Web MVC app that allows users to create different products.</p>
+            @*<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
+
+        </div>
     </div>
-    <div class="col-sm-5">
-        <h1>The Farm Hand App</h1>
-        <p class="lead">A simple ASP.NET Web MVC app that allows users to create different products.</p>
-        @*<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
-    </div>
-</div>
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <h2>homepage</h2>
+    ViewBag.Title = "Index";
+
+}
 
 @*<div class="row">
         <div class="col-md-4">
