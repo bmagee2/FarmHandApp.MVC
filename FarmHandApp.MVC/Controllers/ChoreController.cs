@@ -63,7 +63,7 @@ namespace FarmHandApp.MVC.Controllers
             var service = CreateChoreService();
             var detail = service.GetChoreById(id);
 
-            var noteService = CreateNoteService();
+            //var noteService = CreateNoteService();
             //var notes = noteService.GetNotesByChoreId();
             //ViewBag.Note = "Detail";
 

@@ -42,6 +42,10 @@
             <div class="container">
                 <h1 class="display-4">@Html.DisplayFor(modelItem => item.BulletinTitle)</h1>
                 <p class="lead">@Html.DisplayFor(modelItem => item.BulletinText, new { htmlAttributes = new { rows = 10 } })</p>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BulletinId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.BulletinId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.BulletinId }) |
+                @Html.ActionLink("Add Comment", "CreateCommentWithBulletinId", "Comment", new { id = item.BulletinId }, null)
             </div>
         </div>
         <tr>

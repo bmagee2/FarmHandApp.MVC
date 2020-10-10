@@ -63,6 +63,28 @@ namespace FarmHandApp.Services
         }
 
         // DETAIL
+        //public BulletinDetail GetBulletinById(int id)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity =
+        //            ctx
+        //                .Bulletins
+        //                .Single(e => e.BulletinId == id);
+        //        return
+        //            new BulletinDetail
+        //            {
+        //                UserId = entity.UserId,
+        //                UserName = entity.UserName,
+        //                BulletinId = entity.BulletinId,
+        //                BulletinTitle = entity.BulletinTitle,
+        //                BulletinText = entity.BulletinText,
+        //                CreatedUtc = entity.CreatedUtc,
+        //                ModifiedUtc = entity.ModifiedUtc,
+        //            };
+        //    }
+        //}
+
         public BulletinDetail GetBulletinById(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -70,8 +92,8 @@ namespace FarmHandApp.Services
                 var entity =
                     ctx
                         .Bulletins
-                        .Single(e => e.BulletinId == id);
-                return
+                        .SingleOrDefault(e => e.BulletinId == id);     // CHANGED
+                var detail =    // CHANGED
                     new BulletinDetail
                     {
                         UserId = entity.UserId,
@@ -81,9 +103,38 @@ namespace FarmHandApp.Services
                         BulletinText = entity.BulletinText,
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc,
+                        //Get All Comments for this Bulletin
+                        Comments = ConvertDataEntitiesToViewModel(entity.Comments.ToList())
                     };
+                return detail;  // CHANGED
             }
         }
+
+        // ADDED METHOD
+        public List<CommentListItem> ConvertDataEntitiesToViewModel(List<Comment> comments)
+        {
+            // instantiate a new List<CommentListItem>**
+
+            List<CommentListItem> returnList = new List<CommentListItem>();
+
+            // foreach through my entity.AllComments
+            foreach (var comment in comments)
+            {
+                //create a new CommentListItem
+                var commentListItem = new CommentListItem();
+
+                // assign it the values from the entity.AllComments[i],
+                commentListItem.CommentId = comment.CommentId;
+                commentListItem.CommentText = comment.CommentText;
+                commentListItem.CreatedUtc = comment.CreatedUtc;
+
+                // add CommentListItem to my List<CommentListItem>**
+                returnList.Add(commentListItem);
+            }
+            //  return that List<CommentListItem>**
+            return returnList;
+        }
+
 
         public bool UpdateBulletin(BulletinEdit model)
         {

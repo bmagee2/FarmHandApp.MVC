@@ -31,8 +31,9 @@ namespace FarmHandApp.Models
         [Display(Name = "Modified")]
         public DateTimeOffset ModifiedUtc { get; set; }
 
-        [Display(Name = "View Notes")]
-        public List<CommentDetail> Comments { get; set; }
+        [Display(Name = "View Comments")]
+        public virtual List<CommentListItem> Comments { get; set; }
+        //public List<CommentDetail> Comments { get; set; }
     }
 
     public class BulletinCreate
@@ -82,6 +83,7 @@ namespace FarmHandApp.Models
         [Display(Name = "Modified")]
         public DateTimeOffset ModifiedUtc { get; set; }
 
+        public virtual List<CommentListItem> Comments { get; set; }
     }
 
     public class BulletinEdit

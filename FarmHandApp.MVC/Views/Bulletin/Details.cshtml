@@ -19,12 +19,12 @@
         </dd>
 
         @*<dt>
-            @Html.DisplayNameFor(model => model.UserId)
-        </dt>
+                @Html.DisplayNameFor(model => model.UserId)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UserId)
-        </dd>*@
+            <dd>
+                @Html.DisplayFor(model => model.UserId)
+            </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.UserName)
@@ -67,6 +67,50 @@
         </dd>
 
     </dl>
+
+    @{ int i = 0; }
+
+    <div class="panel-group" id="accordion_@i">
+        <div class="panel panel-default" id="panel_@i">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-target="#collapseOne_@i" href="#collapseOne_@i">
+                        <span class="glyphicon glyphicon-collapse-down"> </span> View Notes
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne_@i" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row">
+
+                        @foreach (var bulletinListItem in Model.Comments)
+                        {
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+
+                                    <div class="caption">
+                                        <h4>@Html.DisplayFor(modelItem => bulletinListItem.CommentText, new { id = Model.BulletinId });</h4>
+                                        <div class="card w-50">
+                                            <div class="card-body">
+
+                                                <p class="card-text">@Html.DisplayFor(modelItem => bulletinListItem.CommentText)</p>
+                                            </div>
+                                        </div>
+                                        <div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.BulletinId }) |
