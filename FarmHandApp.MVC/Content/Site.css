@@ -111,3 +111,36 @@ footer {
 /*    position: fixed;*/
     width: 100%;
 }
+
+.form-horizontal {
+/*    background-color: magenta;*/
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.form-control {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 50px;
+    width: auto;
+    border: 2px solid blue;
+    border-radius: 1px;
+}
+
+.control-label {
+    font-family: 'Lexend Giga', sans-serif;
+}
+
+.btn-default {
+    background-color: orange;
+    font-family: 'Lexend Giga', sans-serif;
+    border: 2px solid black;
+    border-radius: 1px;
+}
+
+.btn-primary {
+    background-color: chartreuse;
+    font-family: 'Lexend Giga', sans-serif;
+    border: 2px solid black;
+    border-radius: 1px;
+}
