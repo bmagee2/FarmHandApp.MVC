@@ -72,6 +72,7 @@ namespace FarmHandApp.Models
     public class NoteEdit
     {
         public int NoteId { get; set; }
+        public int ChoreId { get; set; }
 
         [Display(Name = "Note Title")]
         public string NoteTitle { get; set; }

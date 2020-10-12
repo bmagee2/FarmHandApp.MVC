@@ -102,8 +102,8 @@
                                             <p class="note-text">@Html.DisplayFor(modelItem => choreListItem.UserName)</p>
                                             <p class="note-text">@Html.DisplayFor(modelItem => choreListItem.CreatedUtc)</p>
                                             <hr />
-                                            @Html.ActionLink("Edit Note", "Edit", "Note", new { id = choreListItem.NoteId }, new { @class = "btn btn-default" })
-                                            @Html.ActionLink("Delete Note", "Delete", "Note", new { id = choreListItem.NoteId }, new { @class = "btn btn-default" })
+                                            @Html.ActionLink("Edit", "Edit", "Note", new { id = choreListItem.NoteId }, new { @class = "btn btn-default" })
+                                            @Html.ActionLink("Delete", "Delete", "Note", new { id = choreListItem.NoteId }, new { @class = "btn btn-default" })
                                         </div>
                                         <div>
 

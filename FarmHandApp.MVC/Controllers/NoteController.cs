@@ -134,6 +134,7 @@ namespace FarmHandApp.MVC.Controllers
                 new NoteEdit
                 {
                     NoteId = detail.NoteId,
+                    ChoreId = detail.ChoreId,
                     NoteText = detail.NoteText
                 };
             return View(model);
@@ -156,7 +157,9 @@ namespace FarmHandApp.MVC.Controllers
             if (service.UpdateNote(model))
             {
                 TempData["SaveResult"] = "Note was updated.";
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return RedirectToAction("Index", "Chore");
+                //return RedirectToAction("Details", "Chore", new { id = model.ChoreId });
             }
 
             ModelState.AddModelError("", "Note could not be updated.");
@@ -185,7 +188,8 @@ namespace FarmHandApp.MVC.Controllers
 
             TempData["SaveResult"] = "Note was deleted";
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Chore");
+            //return RedirectToAction("Details", "Chore");
         }
 
         // CreateChoreService METHOD ??

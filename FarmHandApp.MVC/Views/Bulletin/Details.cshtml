@@ -4,19 +4,19 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Bulletin Comments and Info</h2>
 
-<div>
-    <h4>BulletinDetail</h4>
+<div class="info-body">
+    <h4>@*BulletinDetail*@</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.BulletinId)
-        </dt>
+        @*<dt>
+                @Html.DisplayNameFor(model => model.BulletinId)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BulletinId)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.BulletinId)
+            </dd>*@
 
         @*<dt>
                 @Html.DisplayNameFor(model => model.UserId)
@@ -89,12 +89,15 @@
                                 <div class="thumbnail">
 
                                     <div class="caption">
-                                        <h4>@Html.DisplayFor(modelItem => bulletinListItem.CommentText, new { id = Model.BulletinId });</h4>
-                                        <div class="card w-50">
-                                            <div class="card-body">
-
-                                                <p class="card-text">@Html.DisplayFor(modelItem => bulletinListItem.CommentText)</p>
-                                            </div>
+                                        <h4>@Html.DisplayFor(modelItem => bulletinListItem.CommentText, new { id = Model.BulletinId })</h4>
+                                        <hr />
+                                        <div>
+                                            <p class="card-text">@Html.DisplayFor(modelItem => bulletinListItem.CommentText)</p>
+                                            <p class="card-text">@Html.DisplayFor(modelItem => bulletinListItem.UserName)</p>
+                                            <p class="card-text">@Html.DisplayFor(modelItem => bulletinListItem.CreatedUtc)</p>
+                                            <hr />
+                                            @Html.ActionLink("Edit", "Edit", "Comment", new { id = bulletinListItem.CommentId }, new { @class = "btn btn-default" })
+                                            @Html.ActionLink("Delete", "Delete", "Comment", new { id = bulletinListItem.CommentId }, new { @class = "btn btn-default" })
                                         </div>
                                         <div>
 
@@ -113,8 +116,8 @@
 
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.BulletinId }) |
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.BulletinId }) |*@
 
-    @Html.ActionLink("Back to List", "Index")
-    @Html.ActionLink("Back to Bulletins", "Index", null, new { @class = "btn btn-primary" })
+    @*@Html.ActionLink("Back to List", "Index")*@
+    @Html.ActionLink("Back to Farm Bulletin", "Index", null, new { @class = "btn btn-primary" })
 </p>

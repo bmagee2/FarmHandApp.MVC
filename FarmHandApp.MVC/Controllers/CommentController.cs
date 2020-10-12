@@ -89,7 +89,8 @@ namespace FarmHandApp.MVC.Controllers
             if (service.CreateBulletinComment(model))
             {
                 TempData["SaveResult"] = "Note was created.";
-                return RedirectToAction("ListOfCommentsForBulletin", new { id = model.BulletinId });
+                return RedirectToAction("Details", "Bulletin", new { id = model.BulletinId });
+                //return RedirectToAction("ListOfCommentsForBulletin", new { id = model.BulletinId });
             };
 
             ModelState.AddModelError("", "Note could not be created.");
@@ -146,7 +147,8 @@ namespace FarmHandApp.MVC.Controllers
             if (service.UpdateComment(model))
             {
                 TempData["SaveResult"] = "Comment was updated.";
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return RedirectToAction("Index", "Bulletin");
             }
 
             ModelState.AddModelError("", "Comment could not be updated.");
@@ -175,7 +177,8 @@ namespace FarmHandApp.MVC.Controllers
 
             TempData["SaveResult"] = "Comment was deleted";
 
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+            return RedirectToAction("Index", "Bulletin");
         }
 
         // CreateCommentService METHOD

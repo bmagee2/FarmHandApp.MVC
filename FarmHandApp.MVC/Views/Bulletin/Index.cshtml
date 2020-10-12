@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Add Bulletin", "Create", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.BulletinId)
@@ -34,7 +34,7 @@
             </th>
         <th></th>
         <th></th>
-    </tr>
+    </tr>*@
 
     @foreach (var item in Model)
     {
@@ -43,27 +43,27 @@
                 <h1 class="display-4">@Html.DisplayFor(modelItem => item.BulletinTitle)</h1>
                 <h3 class="bulletin-date">@Html.DisplayFor(modelItem => item.CreatedUtc)</h3>
                 <p class="lead">@Html.DisplayFor(modelItem => item.BulletinText, new { htmlAttributes = new { rows = 10 } })</p>
-                @Html.ActionLink("Edit", "Edit", new { id = item.BulletinId }, new { @class = "btn btn-default" })
-                @Html.ActionLink("Details", "Details", new { id = item.BulletinId }, new { @class = "btn btn-default" }) 
-                @Html.ActionLink("Delete", "Delete", new { id = item.BulletinId }, new { @class = "btn btn-default" }) 
+                @Html.ActionLink("Edit Bulletin", "Edit", new { id = item.BulletinId }, new { @class = "btn btn-default" })
+                @Html.ActionLink("View Comments", "Details", new { id = item.BulletinId }, new { @class = "btn btn-default" }) 
+                @Html.ActionLink("Delete Bulletin", "Delete", new { id = item.BulletinId }, new { @class = "btn btn-default" }) 
                 @Html.ActionLink("Add Comment", "CreateCommentWithBulletinId", "Comment", new { id = item.BulletinId }, new { @class = "btn btn-primary" })
             </div>
         </div>
-        <tr>
+        @*<tr>
             <td>
                 @Html.DisplayFor(modelItem => item.BulletinId)
             </td>
-            @*<td>
+            <td>
                     @Html.DisplayFor(modelItem => item.UserId)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.UserName)
-                </td>*@
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BulletinTitle)
             </td>
             <td>
-                @*ROWS FOR MULTILINE TEXT DATATYPE*@
+                ROWS FOR MULTILINE TEXT DATATYPE
                 @Html.DisplayFor(modelItem => item.BulletinText, new { htmlAttributes = new { rows = 10 } })
             </td>
             <td>
@@ -72,9 +72,9 @@
                 }
                 @Html.DisplayFor(modelItem => createdUtc)
             </td>
-            @*<td>
+            <td>
                     @Html.DisplayFor(modelItem => item.ModifiedUtc)
-                </td>*@
+                </td>
             <td>
                 @Html.ActionLink("View Comments", "ListOfCommentsForBulletin", "Comment", new { id = item.BulletinId }, null)
             </td>
@@ -84,7 +84,7 @@
                 @Html.ActionLink("Delete", "Delete", new { id = item.BulletinId }) |
                 @Html.ActionLink("Add Comment", "CreateCommentWithBulletinId", "Comment", new { id = item.BulletinId }, null)
             </td>
-        </tr>
+        </tr>*@
     }
 
-</table>
+@*</table>*@
