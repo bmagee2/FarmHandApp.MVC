@@ -87,7 +87,7 @@ namespace FarmHandApp.Models
 
     public class ChoreDetail
     {
-        public int? ChoreId { get; set; }
+        public int ChoreId { get; set; }
 
         //[Display(Name = "Enter By")]
         public string UserId { get; set; }
@@ -123,7 +123,7 @@ namespace FarmHandApp.Models
 
     public class ChoreEdit
     {
-        public int? ChoreId { get; set; }
+        public int ChoreId { get; set; }
 
         [MinLength(2, ErrorMessage = "Please enter at least 2 characters.")]
         [MaxLength(100, ErrorMessage = "There are too many characters in this field.")]

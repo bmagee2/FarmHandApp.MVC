@@ -18,7 +18,7 @@ namespace FarmHandApp.Data
         public virtual ApplicationUser User { get; set; }
 
         [ForeignKey(nameof(Chore))]
-        public int? ChoreId { get; set; }
+        public int ChoreId { get; set; }
         public virtual Chore Chore { get; set; }
 
         [Required]

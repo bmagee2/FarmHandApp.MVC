@@ -11,7 +11,7 @@ namespace FarmHandApp.Data
     public class Chore
     {
         [Key]
-        public int? ChoreId { get; set; }
+        public int ChoreId { get; set; }
 
         [ForeignKey(nameof(User))]
         public string UserId { get; set; }
