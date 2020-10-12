@@ -11,7 +11,7 @@ namespace FarmHandApp.Models
     {
         public int ChoreUserId { get; set; }
         public string UserId { get; set; }
-        public int ChoreId { get; set; }
+        public int? ChoreId { get; set; }
         [Display(Name = "Name")]
         public string ChoreName { get; set; }
         [Display(Name = "Description")]

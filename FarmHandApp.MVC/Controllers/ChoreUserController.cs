@@ -56,7 +56,7 @@ namespace FarmHandApp.MVC.Controllers
             var model =
                 new ChoreUserCreate  
                 {
-                    ChoreId = detail.ChoreId
+                    ChoreId = (int)detail.ChoreId
                 };
 
             return View(model);

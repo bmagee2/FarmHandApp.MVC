@@ -77,7 +77,7 @@ namespace FarmHandApp.MVC.Controllers
                 new NoteCreate  // like edit but create new note
                 {
                     //NoteId = detail.NoteId,
-                    ChoreId = detail.ChoreId
+                    ChoreId = (int)detail.ChoreId
                 };
 
             return View(model);

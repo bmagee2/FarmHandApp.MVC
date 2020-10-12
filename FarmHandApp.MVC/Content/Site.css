@@ -112,7 +112,7 @@ h1 {
 }
 
 .card-header {
-    background-color: lightgreen;
+/*    background-color: lightgreen;*/
 }
 
 .card-title {
@@ -196,7 +196,7 @@ h2 {
 }
 
 .btn-primary {
-    background-color: chartreuse;
+    background-color: darkblue;
     font-family: 'Lexend Giga', sans-serif;
     border: 2px solid black;
     border-radius: 1px;
