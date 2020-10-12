@@ -116,7 +116,8 @@ namespace FarmHandApp.MVC.Controllers
             if (service.CreateChoreNote(model))
             {
                 TempData["SaveResult"] = "Note was created.";
-                return RedirectToAction("ListOfNotesForChore", new { id = model.ChoreId});  // ADDED -- create note by choreid & return to list of notes for chore
+                return RedirectToAction("Details", "Chore", new { id = model.ChoreId });
+                /*return RedirectToAction("ListOfNotesForChore", new { id = model.ChoreId});*/  // ADDED -- create note by choreid & return to list of notes for chore
             };
 
             ModelState.AddModelError("", "Note could not be created.");

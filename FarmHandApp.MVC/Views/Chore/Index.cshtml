@@ -6,9 +6,10 @@
 
 <h2>Chores</h2>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<p>
-    @Html.ActionLink("Add Chore", "Create", null, new { @class = "btn btn-primary" })
+<p class="create-chore">
+    @Html.ActionLink("Add Chore", "Create", null, new { @class = "btn btn-primary create" })
 </p>
+<hr />
 @*CHORE CREATE SUCCESS MESSAGE*@
 @if (TempData.ContainsKey("SaveResult"))
 {
@@ -30,73 +31,81 @@
         <div class="card">
 
             <div class="card-body">
-                <h5 class="card-title">  @Html.DisplayFor(modelItem => item.ChoreName)</h5>
-                <p class="card-text">  @Html.DisplayFor(modelItem => item.ChoreDescription)</p>
+                <h3 class="card-title">@Html.DisplayFor(modelItem => item.ChoreName)</h3>
+                <h4 class="card-text"> <b>Date:</b>  @Html.DisplayFor(modelItem => item.CreatedUtc)</h4>
+                <p class="card-text"> <b>Description:</b> @Html.DisplayFor(modelItem => item.ChoreDescription)</p>
+                <p class="card-text"> <b>Location:</b> @Html.DisplayFor(modelItem => item.Location)</p>
+                <p class="card-text"> <b>Animal:</b> @Html.DisplayFor(modelItem => item.Animal)</p>
+                <p class="card-text"> <b>Time of day:</b> @Html.DisplayFor(modelItem => item.TimeOfDay)</p>
             </div>
             <div class="card-header">
                 <ul class="nav nav-pills card-header-pills">
                     <li class="nav-item">
-                        @Html.ActionLink("Edit Chore", "Edit", "Chore", new { id = item.ChoreId }, null)
+                        @Html.ActionLink("View Chore Notes", "Details", new { id = item.ChoreId }, new { @class = "btn btn-primary" })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("Details", "Details", new { id = item.ChoreId })
+                        @*@Html.ActionLink("Add Note", "CreateNoteWithChoreId", "Note", new { id = item.ChoreId }, null)*@
+                        @Html.ActionLink("Add Note", "CreateNoteWithChoreId", "Note", new { id = item.ChoreId }, new { @class = "btn btn-primary" })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ChoreId })
+                        @*@Html.ActionLink("Add to My Chores", "CreateChoreUserWithChoreId", "ChoreUser", new { id = item.ChoreId }, null)*@
+                        @Html.ActionLink("Add to My Chores", "CreateChoreUserWithChoreId", "ChoreUser", new { id = item.ChoreId }, new { @class = "btn btn-primary" })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("Add Note", "CreateNoteWithChoreId", "Note", new { id = item.ChoreId }, null)
+                        @*@Html.ActionLink("Edit Chore", "Edit", "Chore", new { id = item.ChoreId }, null)*@
+                        @Html.ActionLink("Edit Chore", "Edit", "Chore", new { id = item.ChoreId }, new { @class = "btn btn-primary" })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("Add Chore User", "CreateChoreUserWithChoreId", "ChoreUser", new { id = item.ChoreId }, null)
+                        @*@Html.ActionLink("Delete Chore", "Delete", new { id = item.ChoreId }, null)*@
+                        @Html.ActionLink("Delete Chore", "Delete", new { id = item.ChoreId }, new { @class = "btn btn-primary" })
                     </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("View Notes", "ListOfNotesForChore", "Note", new { id = item.ChoreId }, null)
-                    </li>
+                    @*<li class="nav-item">
+                            @Html.ActionLink("View Notes", "ListOfNotesForChore", "Note", new { id = item.ChoreId }, null)
+                        </li>*@
                 </ul>
             </div>
         </div>
 
         @*<div class="panel-group" id="accordion_@i">
-            <div class="panel panel-default" id="panel_@i">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-target="#collapseOne_@i" href="#collapseOne_@i">
-                            <span class="glyphicon glyphicon-collapse-down"> </span> View Notes
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseOne_@i" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <div class="row">
+                <div class="panel panel-default" id="panel_@i">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-target="#collapseOne_@i" href="#collapseOne_@i">
+                                <span class="glyphicon glyphicon-collapse-down"> </span> View Notes
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne_@i" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
 
-                            @foreach (var choreListItem in item.Notes)
-                            {
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="thumbnail">
+                                @foreach (var choreListItem in item.Notes)
+                                {
+                                    <div class="col-sm-6 col-md-4">
+                                        <div class="thumbnail">
 
-                                        <div class="caption">
-                                            <h4>@Html.DisplayFor(modelItem => choreListItem.NoteTitle)</h4>
-                                            <div class="card w-50">
-                                                <div class="card-body">
+                                            <div class="caption">
+                                                <h4>@Html.DisplayFor(modelItem => choreListItem.NoteTitle)</h4>
+                                                <div class="card w-50">
+                                                    <div class="card-body">
 
-                                                    <p class="card-text">@Html.DisplayFor(modelItem => choreListItem.NoteText)</p>
+                                                        <p class="card-text">@Html.DisplayFor(modelItem => choreListItem.NoteText)</p>
+                                                    </div>
+                                                </div>
+                                                <div>
+
                                                 </div>
                                             </div>
-                                            <div>
 
-                                            </div>
                                         </div>
-
                                     </div>
-                                </div>
-                            }
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </div>*@
+            </div>*@
     </div>
     i++;
 

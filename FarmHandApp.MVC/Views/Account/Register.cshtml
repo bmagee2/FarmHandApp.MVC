@@ -10,7 +10,7 @@
     <div class="register">
         <h2>@ViewBag.Title</h2>
         @Html.AntiForgeryToken()
-        <h4>Create a new account</h4>
+        <h4 class="new-account">Create a new account</h4>
         @*<hr />*@
         @Html.ValidationSummary("", new { @class = "text-danger" })
         <div class="form-group">

@@ -35,10 +35,12 @@ namespace FarmHandApp.Models
 
         [Required]
         [MaxLength(100)]
+        [Display(Name = "Note Title")]
         public string NoteTitle { get; set; }
 
         [Required]
         [MaxLength(2000)]
+        [Display(Name = "Note")]
         public string NoteText { get; set; }
 
         //[Required]
@@ -70,7 +72,11 @@ namespace FarmHandApp.Models
     public class NoteEdit
     {
         public int NoteId { get; set; }
+
+        [Display(Name = "Note Title")]
         public string NoteTitle { get; set; }
+
+        [Display(Name = "Note")]
         public string NoteText { get; set; }
     }
 }
