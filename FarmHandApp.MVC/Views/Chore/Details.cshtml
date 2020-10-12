@@ -4,9 +4,9 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-<div>
-    <h4>ChoreDetail</h4>
+<h2>Chore Info and Notes</h2>
+<div class="info-body">
+    <h4>@*ChoreDetail*@</h4>
     <hr />
     <dl class="dl-horizontal">
         @*<dt>
@@ -42,12 +42,12 @@
         </dd>
 
         @*<dt>
-            @Html.DisplayNameFor(model => model.IsDaily)
-        </dt>
+                @Html.DisplayNameFor(model => model.IsDaily)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IsDaily)
-        </dd>*@
+            <dd>
+                @Html.DisplayFor(model => model.IsDaily)
+            </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.CreatedUtc)
@@ -66,12 +66,12 @@
         </dd>
 
         @*<dt>
-            @Html.DisplayNameFor(model => model.Notes)
-        </dt>
+                @Html.DisplayNameFor(model => model.Notes)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Notes)
-        </dd>*@
+            <dd>
+                @Html.DisplayFor(model => model.Notes)
+            </dd>*@
     </dl>
 
     @{ int i = 0; }
@@ -81,7 +81,7 @@
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-target="#collapseOne_@i" href="#collapseOne_@i">
-                        <span class="glyphicon glyphicon-collapse-down"> </span> View Notes
+                        <span class="glyphicon glyphicon-collapse-down"> </span> View Chore Notes
                     </a>
                 </h4>
             </div>
@@ -95,12 +95,15 @@
                                 <div class="thumbnail">
 
                                     <div class="caption">
-                                        <h4>@Html.DisplayFor(modelItem => choreListItem.NoteTitle, new { id = Model.ChoreId });</h4>
-                                        <div class="card w-50">
-                                            <div class="card-body">
-
-                                                <p class="card-text">@Html.DisplayFor(modelItem => choreListItem.NoteText)</p>
-                                            </div>
+                                        <h4>@Html.DisplayFor(modelItem => choreListItem.NoteTitle, new { id = Model.ChoreId })</h4>
+                                        <hr />
+                                        <div>
+                                            <p class="note-text">@Html.DisplayFor(modelItem => choreListItem.NoteText)</p>
+                                            <p class="note-text">@Html.DisplayFor(modelItem => choreListItem.UserName)</p>
+                                            <p class="note-text">@Html.DisplayFor(modelItem => choreListItem.CreatedUtc)</p>
+                                            <hr />
+                                            @Html.ActionLink("Edit Note", "Edit", "Note", new { id = choreListItem.NoteId }, new { @class = "btn btn-default" })
+                                            @Html.ActionLink("Delete Note", "Delete", "Note", new { id = choreListItem.NoteId }, new { @class = "btn btn-default" })
                                         </div>
                                         <div>
 
@@ -116,9 +119,9 @@
         </div>
 
     </div>
-   
+
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ChoreId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.ChoreId }) |*@
+    @Html.ActionLink("Back to Chores", "Index", null, new { @class = "btn btn-primary" })
 </p>
