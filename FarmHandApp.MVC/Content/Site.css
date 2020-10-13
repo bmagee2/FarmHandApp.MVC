@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: whitesmoke;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -53,16 +54,30 @@ footer {
     src: url(Assests/Merci-Regular.ttf);
 }
 
+@font-face {
+    font-family: Klein-Condensed-ExtraBold-trial;
+    src: url(Assets/Klein-Condensed-ExtraBold-trial.ttf);
+}
+
 /*NAVBAR COLOR & APP NAME FONT*/
 .navbar {
-    background-color: darkslategrey;
-    font-family: 'Lexend Giga', sans-serif;
+    background-color: #243370;
+    font-family: Klein-Condensed-ExtraBold-trial, sans-serif;
+}
+
+.navbar-brand{
+    color: white;
+}
+
+.navbar-link {
+    color: white;
 }
 
 /*NAVBAR LINKS*/
 .navbar-collapse {
-      font-family: 'Lexend Giga', sans-serif;
-/*    font-family: Merci-Regular;*/
+    font-family: Arial, sans-serif;
+    color: white;
+    /*    font-family: Merci-Regular;*/
 }
 
 
@@ -73,13 +88,13 @@ footer {
 }*/
 
 .checkbox {
-    font-family: 'Lexend Giga', sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 14px;
 }
 
 /*REGISTER*/
-.new-account{
-    font-family: 'Comic Sans MS'
+.new-account {
+    font-family: Arial, sans-serif;
 }
 
 /*MAIN PAGE*/
@@ -89,7 +104,7 @@ footer {
 }
 
 h1 {
-    font-family: 'Lexend Giga', sans-serif;
+    font-family: Klein-Condensed-ExtraBold-trial, sans-serif;
 }
 
 .about {
@@ -119,13 +134,13 @@ h1 {
     margin-left: 7px;
 }
 .card-text {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     margin-left: 10px;
 }
 
 .note-text {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: mediumvioletred;
+    font-family: Arial, sans-serif;
+/*    background-color: mediumvioletred;*/
 }
 
 /*button spacing*/
@@ -134,17 +149,7 @@ h1 {
     margin-right: 7px;
 }
 
-button {
-    height: 50px;
-    width: auto;
-    align-items: center;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 4px;
-    border: 3px solid black;
-    border-radius: 5px;
-    background: white;
-    text-decoration: none;
-}
+
 
 footer {
     /* background-color: rgb(218, 28, 192); */
@@ -155,18 +160,19 @@ footer {
     bottom: 0;
     /*    position: fixed;*/
     width: 100%;
-    font-family: 'Lexend Giga', sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 /*FORM HEADER*/
 h2 {
-    font-family: 'Lexend Giga', sans-serif;
+    font-family: Klein-Condensed-ExtraBold-trial, sans-serif;
     text-align: center;
+    color: #243370;
 }
 
 /*FORM BODY*/
 .form-horizontal {
-    background-color: magenta;
+/*    background-color: magenta;*/
     margin-left: 20%;
     margin-right: 20%;
 }
@@ -177,39 +183,40 @@ h2 {
     margin-bottom: 5px;
     height: 50px;
     width: auto;
-    border: 2px solid blue;
+    border: 2px solid black;
     border-radius: 1px;
 }
 
 /*FORM INPUT LABELS*/
 .control-label {
-    font-family: 'Lexend Giga', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 3px;
 }
 
 /*BUTTONS*/
 .btn-default {
-    background-color: orange;
-    font-family: 'Lexend Giga', sans-serif;
+    background-color: #266946;
+    font-family: Arial, sans-serif;
+    color: white;
     border: 2px solid black;
     border-radius: 1px;
 }
 
 .btn-primary {
-    background-color: darkblue;
-    font-family: 'Lexend Giga', sans-serif;
+    background-color: #266946;
+    font-family: Arial, sans-serif;
     border: 2px solid black;
     border-radius: 1px;
 }
 
 .dl-horizontal {
-    background-color: orange;
+/*    background-color: orange;*/
     margin-left: 20%;
     margin-right: 20%;
 }
 
 .info-body {
-    background-color: orange;
+/*    background-color: orange;*/
     margin-left: 20%;
     margin-right: 20%;
 }

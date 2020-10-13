@@ -26,11 +26,11 @@
                     @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Chores", "Index", "Chore")</li>
+                        <li>@Html.ActionLink("Chores", "Index", "Chore", new { area = "" }, new { @class = "navbar-link" })</li>
                     }
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Farm Bulletin", "Index", "Bulletin")</li>
+                        <li>@Html.ActionLink("Farm Bulletin", "Index", "Bulletin", new { area = "" }, new { @class = "navbar-link" })</li>
                     }
                     @*@if (User.Identity.IsAuthenticated)
                         {
