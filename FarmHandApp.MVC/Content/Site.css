@@ -99,23 +99,36 @@ footer {
 
 /*MAIN PAGE*/
 .logo {
-    background-color: orange;
-    margin: 20px;
+    /*    background-color: orange;*/
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 70px;
+    /*padding-left: 15px;
+    padding-right: 15px;*/
 }
 
 h1 {
     font-family: Klein-Condensed-ExtraBold-trial, sans-serif;
 }
 
-.about {
-    background-color: deepskyblue;
-    margin: 20px;
-    font-family: Arial;
+.main-about {
+    /*    background-color: deepskyblue;*/
+    margin-top: 100px;
+    margin-bottom: 50px;
+    margin-right: 70px;
+    font-family: Klein-Condensed-ExtraBold-trial, sans-serif;
+    font-size: 200px;
 }
 
+/*HOMEPAGE*/
+.homepage{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
 
 /*CHORES*/
-.create{
+.create {
     /*margin-left: 70%;*/
     right: 0;
 }
@@ -219,4 +232,9 @@ h2 {
 /*    background-color: orange;*/
     margin-left: 20%;
     margin-right: 20%;
+}
+
+.scrollable {
+    background-color: gold;
+    overflow: auto;
 }

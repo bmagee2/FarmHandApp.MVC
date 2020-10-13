@@ -6,12 +6,12 @@
 {
     <div class="row">
         <div class="logo col-sm-5">
-            <h1>logo</h1>
-            <img src="~/Content/Assets/DL-logo.png" width="300" height="300" />
+            @*<h1>logo</h1>*@
+            <img src="~/Content/Assets/FarmHandLogo.png" width="300" height="300" />
         </div>
-        <div class="about col-sm-5">
-            <h1>The Farm Hand App</h1>
-            <p class="lead">For the staff of a working farm.</p>
+        <div class="main-about col-sm-5">
+            <h1>@*The Farm Hand App*@</h1>
+            <h1 class="lead">For farm staff to track the chores and news of a working farm</h1>
             @*<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
 
         </div>
@@ -19,9 +19,11 @@
 }
 @if (User.Identity.IsAuthenticated)
 {
-    <h2>homepage</h2>
-    ViewBag.Title = "Index";
 
+    ViewBag.Title = "Index";
+    <div class="homepage">
+        <img src="~/Content/Assets/FarmHandLogo.png" width="300" height="300" />
+    </div>
 }
 
 @*<div class="row">
