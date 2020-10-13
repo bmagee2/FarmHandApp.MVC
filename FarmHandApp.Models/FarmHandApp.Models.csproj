@@ -54,11 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BulletinModel.cs" />
+    <Compile Include="ChoreModel.cs" />
+    <Compile Include="ChoreUserModel.cs" />
+    <Compile Include="CommentModel.cs" />
+    <Compile Include="NoteModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FarmHandApp.Data\FarmHandApp.Data.csproj">
+      <Project>{8BA3EA8A-C287-4CA3-B2D3-AF07D12C4863}</Project>
+      <Name>FarmHandApp.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

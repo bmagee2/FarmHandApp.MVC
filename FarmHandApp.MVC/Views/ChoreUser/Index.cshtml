@@ -1,0 +1,72 @@
+﻿@model IEnumerable<FarmHandApp.Models.ChoreUserListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>My Chores</h2>
+
+<p>
+    @Html.ActionLink("Back to Chores", "Index", "Chore", null, new { @class = "btn btn-default" })
+</p>
+@*<table class="table">
+    <tr>
+        <th>
+                @Html.DisplayNameFor(model => model.ChoreUserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChoreId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChoreIsComplete)
+        </th>
+        <th></th>
+    </tr>*@
+
+    @foreach (var item in Model)
+    {
+
+        <div class="card">
+
+            <div class="card-body">
+                <h3 class="card-title">@Html.DisplayFor(modelItem => item.ChoreId)</h3>
+                <h4 class="card-text"> <b>Chore Status:</b> @Html.DisplayFor(modelItem => item.ChoreIsComplete)</h4>
+            </div>
+            <div class="card-header">
+                <ul class="nav nav-pills card-header-pills">
+                    <li class="nav-item">
+                        @Html.ActionLink("Mark as Complete", "Edit", new { id = item.ChoreUserId }, new { @class = "btn btn-primary" })
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        @*<tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.ChoreUserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChoreId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChoreName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChoreIsComplete)
+            </td>
+            <td>
+                @Html.ActionLink("Mark as Complete", "Edit", new { id = item.ChoreUserId })
+                @Html.ActionLink("Details", "Details", new { id = item.ChoreUserId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ChoreUserId })
+            </td>
+        </tr>*@
+    }
+
+@*</table>*@

@@ -1,0 +1,90 @@
+﻿@model IEnumerable<FarmHandApp.Models.BulletinListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Farm Bulletin</h2>
+
+<p>
+    @Html.ActionLink("Add Bulletin", "Create", null, new { @class = "btn btn-primary" })
+</p>
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BulletinId)
+        </th>
+        <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BulletinTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BulletinText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedUtc)
+        </th>
+        <th>
+                @Html.DisplayNameFor(model => model.ModifiedUtc)
+            </th>
+        <th></th>
+        <th></th>
+    </tr>*@
+
+    @foreach (var item in Model)
+    {
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">@Html.DisplayFor(modelItem => item.BulletinTitle)</h1>
+                <h3 class="bulletin-date">@Html.DisplayFor(modelItem => item.CreatedUtc)</h3>
+                <p class="lead">@Html.DisplayFor(modelItem => item.BulletinText, new { htmlAttributes = new { rows = 10 } })</p>
+                @Html.ActionLink("Edit Bulletin", "Edit", new { id = item.BulletinId }, new { @class = "btn btn-default" })
+                @Html.ActionLink("View Comments", "Details", new { id = item.BulletinId }, new { @class = "btn btn-default" }) 
+                @Html.ActionLink("Delete Bulletin", "Delete", new { id = item.BulletinId }, new { @class = "btn btn-default" }) 
+                @Html.ActionLink("Add Comment", "CreateCommentWithBulletinId", "Comment", new { id = item.BulletinId }, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+        @*<tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BulletinId)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BulletinTitle)
+            </td>
+            <td>
+                ROWS FOR MULTILINE TEXT DATATYPE
+                @Html.DisplayFor(modelItem => item.BulletinText, new { htmlAttributes = new { rows = 10 } })
+            </td>
+            <td>
+                @{
+                    string createdUtc = item.CreatedUtc.ToString("d");
+                }
+                @Html.DisplayFor(modelItem => createdUtc)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedUtc)
+                </td>
+            <td>
+                @Html.ActionLink("View Comments", "ListOfCommentsForBulletin", "Comment", new { id = item.BulletinId }, null)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BulletinId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.BulletinId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.BulletinId }) |
+                @Html.ActionLink("Add Comment", "CreateCommentWithBulletinId", "Comment", new { id = item.BulletinId }, null)
+            </td>
+        </tr>*@
+    }
+
+@*</table>*@

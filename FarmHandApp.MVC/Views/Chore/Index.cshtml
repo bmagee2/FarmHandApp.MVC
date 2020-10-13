@@ -1,0 +1,204 @@
+﻿@model IEnumerable<FarmHandApp.Models.ChoreListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Chores</h2>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<p class="create-chore">
+    @Html.ActionLink("Add Chore", "Create", null, new { @class = "btn btn-primary create" })
+</p>
+<hr />
+@*CHORE CREATE SUCCESS MESSAGE*@
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success fade in" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+}
+
+@{ int i = 0; }
+
+@foreach (var item in Model)
+{
+    <div class="container">
+
+        <div class="scrollable">
+
+        <div class="card">
+
+            <div class="card-body">
+                <h3 class="card-title">@Html.DisplayFor(modelItem => item.ChoreName)</h3>
+                <h4 class="card-text"> <b>Date:</b>  @Html.DisplayFor(modelItem => item.CreatedUtc)</h4>
+                <p class="card-text"> <b>Description:</b> @Html.DisplayFor(modelItem => item.ChoreDescription)</p>
+                <p class="card-text"> <b>Location:</b> @Html.DisplayFor(modelItem => item.Location)</p>
+                <p class="card-text"> <b>Animal:</b> @Html.DisplayFor(modelItem => item.Animal)</p>
+                <p class="card-text"> <b>Time of day:</b> @Html.DisplayFor(modelItem => item.TimeOfDay)</p>
+            </div>
+            <div class="card-header">
+                <ul class="nav nav-pills card-header-pills">
+                    <li class="nav-item">
+                        @Html.ActionLink("View Chore Notes", "Details", new { id = item.ChoreId }, new { @class = "btn btn-primary" })
+                    </li>
+                    <li class="nav-item">
+                        @*@Html.ActionLink("Add Note", "CreateNoteWithChoreId", "Note", new { id = item.ChoreId }, null)*@
+                        @Html.ActionLink("Add Note", "CreateNoteWithChoreId", "Note", new { id = item.ChoreId }, new { @class = "btn btn-primary" })
+                    </li>
+                    <li class="nav-item">
+                        @*@Html.ActionLink("Add to My Chores", "CreateChoreUserWithChoreId", "ChoreUser", new { id = item.ChoreId }, null)*@
+                        @Html.ActionLink("Add to My Chores", "CreateChoreUserWithChoreId", "ChoreUser", new { id = item.ChoreId }, new { @class = "btn btn-primary" })
+                    </li>
+                    <li class="nav-item">
+                        @*@Html.ActionLink("Edit Chore", "Edit", "Chore", new { id = item.ChoreId }, null)*@
+                        @Html.ActionLink("Edit Chore", "Edit", "Chore", new { id = item.ChoreId }, new { @class = "btn btn-primary" })
+                    </li>
+                    <li class="nav-item">
+                        @*@Html.ActionLink("Delete Chore", "Delete", new { id = item.ChoreId }, null)*@
+                        @Html.ActionLink("Delete Chore", "Delete", new { id = item.ChoreId }, new { @class = "btn btn-primary" })
+                    </li>
+                    @*<li class="nav-item">
+                            @Html.ActionLink("View Notes", "ListOfNotesForChore", "Note", new { id = item.ChoreId }, null)
+                        </li>*@
+                </ul>
+            </div>
+        </div>
+        </div>
+
+        @*<div class="panel-group" id="accordion_@i">
+                <div class="panel panel-default" id="panel_@i">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-target="#collapseOne_@i" href="#collapseOne_@i">
+                                <span class="glyphicon glyphicon-collapse-down"> </span> View Notes
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne_@i" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+
+                                @foreach (var choreListItem in item.Notes)
+                                {
+                                    <div class="col-sm-6 col-md-4">
+                                        <div class="thumbnail">
+
+                                            <div class="caption">
+                                                <h4>@Html.DisplayFor(modelItem => choreListItem.NoteTitle)</h4>
+                                                <div class="card w-50">
+                                                    <div class="card-body">
+
+                                                        <p class="card-text">@Html.DisplayFor(modelItem => choreListItem.NoteText)</p>
+                                                    </div>
+                                                </div>
+                                                <div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>*@
+    </div>
+    i++;
+
+}
+
+
+
+
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ChoreId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChoreName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChoreDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Animal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeOfDay)
+        </th>*@
+@*<th>
+        @Html.DisplayNameFor(model => model.IsDaily)
+    </th>*@
+@*<th>
+        @Html.DisplayNameFor(model => model.CreatedUtc)
+    </th>*@
+@*<th>
+        @Html.DisplayNameFor(model => model.ModifiedUtc)
+    </th>*@
+@*<th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th></th>
+    </tr>*@
+
+@*@foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChoreId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChoreName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChoreDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Animal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeOfDay)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.IsDaily)
+                    </td>
+                <td>
+                    @{
+                        string createdUtc = item.CreatedUtc.ToString("d");
+                    }
+                    @Html.DisplayFor(modelItem => createdUtc)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.ModifiedUtc)
+                    </td>
+                <td>
+                     LIST OF NOTES FOR CHORE
+                    @Html.DisplayFor(modelItem => item.Notes)
+                    @Html.ActionLink("Notes", "Index", "Note")
+                    @Html.ActionLink("View Notes", "ListOfNotesForChore", "Note", new { id = item.ChoreId }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ChoreId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ChoreId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ChoreId }) |
+                    @Html.ActionLink("Add Note", "CreateNoteWithChoreId", "Note", new { id = item.ChoreId }, null)
+                    @Html.ActionLink("Add Chore User", "CreateChoreUserWithChoreId", "ChoreUser", new { id = item.ChoreId }, null)
+                </td>
+            </tr>
+        }
+
+    </table>*@

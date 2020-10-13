@@ -1,0 +1,123 @@
+﻿@model FarmHandApp.Models.BulletinDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Bulletin Comments and Info</h2>
+
+<div class="info-body">
+    <h4>@*BulletinDetail*@</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+                @Html.DisplayNameFor(model => model.BulletinId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BulletinId)
+            </dd>*@
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.UserId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserId)
+            </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BulletinTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BulletinTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BulletinText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BulletinText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedUtc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedUtc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedUtc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedUtc)
+        </dd>
+
+    </dl>
+
+    @{ int i = 0; }
+
+    <div class="panel-group" id="accordion_@i">
+        <div class="panel panel-default" id="panel_@i">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-target="#collapseOne_@i" href="#collapseOne_@i">
+                        <span class="glyphicon glyphicon-collapse-down"> </span> View Comments
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne_@i" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row">
+
+                        @foreach (var bulletinListItem in Model.Comments)
+                        {
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+
+                                    <div class="caption">
+                                        <h4>@Html.DisplayFor(modelItem => bulletinListItem.CommentText, new { id = Model.BulletinId })</h4>
+                                        <hr />
+                                        <div>
+                                            @*<p class="card-text">@Html.DisplayFor(modelItem => bulletinListItem.CommentText)</p>*@
+                                            <p class="card-text">@Html.DisplayFor(modelItem => bulletinListItem.UserName)</p>
+                                            <p class="card-text">@Html.DisplayFor(modelItem => bulletinListItem.CreatedUtc)</p>
+                                            <hr />
+                                            @Html.ActionLink("Edit", "Edit", "Comment", new { id = bulletinListItem.CommentId }, new { @class = "btn btn-default" })
+                                            @Html.ActionLink("Delete", "Delete", "Comment", new { id = bulletinListItem.CommentId }, new { @class = "btn btn-default" })
+                                        </div>
+                                        <div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.BulletinId }) |*@
+
+    @*@Html.ActionLink("Back to List", "Index")*@
+    @Html.ActionLink("Back to Farm Bulletin", "Index", null, new { @class = "btn btn-primary" })
+</p>
